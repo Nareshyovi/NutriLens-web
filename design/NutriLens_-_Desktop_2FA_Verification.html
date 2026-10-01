@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Two-Step Verification | NutriLens AI</title>
+<!-- Google Fonts: Inter & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus Jakarta Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with Container Queries and Forms -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-container": "#fe893c",
+            "on-secondary-fixed-variant": "#763300",
+            "surface-bright": "#f1fcf5",
+            "on-surface-variant": "#3e4a41",
+            "on-secondary": "#ffffff",
+            "secondary": "#9a4600",
+            "inverse-primary": "#69dca1",
+            "primary-container": "#008656",
+            "inverse-on-surface": "#e8f3ed",
+            "on-secondary-fixed": "#321200",
+            "tertiary": "#0058be",
+            "primary-fixed-dim": "#69dca1",
+            "surface-container-low": "#ebf6f0",
+            "primary-fixed": "#86f9bc",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed-dim": "#ffb68d",
+            "outline-variant": "#bdcabf",
+            "surface-variant": "#dae5df",
+            "error-container": "#ffdad6",
+            "inverse-surface": "#28332e",
+            "surface-tint": "#006c45",
+            "tertiary-container": "#2170e4",
+            "on-background": "#141e1a",
+            "background": "#f1fcf5",
+            "on-tertiary-fixed-variant": "#004395",
+            "surface": "#f1fcf5",
+            "on-surface": "#141e1a",
+            "outline": "#6d7a71",
+            "tertiary-fixed": "#d8e2ff",
+            "primary": "#006a43",
+            "surface-container-highest": "#dae5df",
+            "on-primary-fixed-variant": "#005233",
+            "on-error-container": "#93000a",
+            "on-error": "#ffffff",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed": "#001a42",
+            "surface-container": "#e5f1ea",
+            "on-primary-container": "#f6fff6",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed": "#ffdbc9",
+            "surface-dim": "#d1ddd6",
+            "on-primary-fixed": "#002112",
+            "on-tertiary-container": "#fefcff",
+            "on-secondary-container": "#672c00",
+            "tertiary-fixed-dim": "#adc6ff",
+            "surface-container-high": "#e0ebe4",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-lg": "1.25rem",
+            "gutter-mobile": "0.75rem",
+            "space-xl": "1.75rem",
+            "space-xs": "0.25rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "margin": "1.25rem"
+          },
+          "fontFamily": {
+            "metric-headline": ["Plus Jakarta Sans"],
+            "label-caps": ["Inter"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "label-interactive": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "metric-headline": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "display-hero-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "800" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "label-interactive": ["15px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md text-body-md antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar (Shared Component Anchor) -->
+<header class="w-full sticky top-0 z-50 flex justify-between items-center px-6 lg:px-12 py-3 bg-surface-container-lowest/95 backdrop-blur-md border-b border-surface-variant shadow-sm">
+<div class="flex items-center gap-8">
+<a class="text-headline-md font-headline-md text-primary tracking-tight font-extrabold flex items-center gap-2" href="#">
+<span class="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="lens">lens</span>
+</span>
+        NutriLens AI
+      </a>
+<!-- Navigation Links from Shared Components JSON -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant font-label-interactive text-label-interactive hover:text-primary transition-colors" href="#">Product</a>
+<a class="text-on-surface-variant font-label-interactive text-label-interactive hover:text-primary transition-colors" href="#">Science</a>
+<a class="text-primary font-label-interactive text-label-interactive border-b-2 border-primary pb-1" href="#">Security</a>
+<a class="text-on-surface-variant font-label-interactive text-label-interactive hover:text-primary transition-colors" href="#">Help Center</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<a class="text-on-surface-variant hover:text-primary font-label-interactive text-label-interactive transition-colors" href="#">Log In</a>
+<a class="bg-primary hover:bg-primary-container text-on-primary px-5 py-2 rounded-full font-label-interactive text-label-interactive transition-all shadow-sm active:scale-[0.98]" href="#">Get Started</a>
+</div>
+</header>
+<!-- Main 50/50 Split Layout Area -->
+<main class="flex-1 flex flex-col lg:flex-row w-full max-w-[1600px] mx-auto overflow-hidden">
+<!-- LEFT SIDE: Security Architecture Showcase Panel -->
+<section class="lg:w-1/2 bg-surface-container-low p-8 lg:p-16 flex flex-col justify-between border-r border-surface-variant/70 relative overflow-hidden">
+<!-- Atmospheric Background Glow -->
+<div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-fixed/30 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-24 w-96 h-96 bg-surface-tint/10 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Top Badge & Header -->
+<div class="relative z-10">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/50 text-primary font-label-caps text-label-caps mb-6 shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
+          ENTERPRISE DEFENSE LAYER
+        </div>
+<h1 class="text-display-hero font-display-hero text-on-surface tracking-tight mb-4">
+          Safeguarding your <br>
+<span class="text-primary">biometric &amp; metabolic</span> data.
+        </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-lg mb-8">
+          NutriLens AI treats your dietary logs, glucose responses, and physiological markers with hospital-grade cryptographic separation.
+        </p>
+<!-- Dynamic Security Highlight Cards -->
+<div class="space-y-4 max-w-lg">
+<!-- Item 1: Zero-Knowledge -->
+<div class="p-4 rounded-xl bg-surface-container-lowest/80 backdrop-blur-sm border border-outline-variant/30 flex items-start gap-4 shadow-sm hover:border-primary/40 transition-colors">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" data-icon="lock_open">lock_open</span>
+</div>
+<div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Zero-Knowledge Architecture</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Your personal meal scans are encrypted on-device before sync. Even NutriLens engineers cannot decipher your biometric photos.</p>
+</div>
+</div>
+<!-- Item 2: Biometric Passkeys -->
+<div class="p-4 rounded-xl bg-surface-container-lowest/80 backdrop-blur-sm border border-outline-variant/30 flex items-start gap-4 shadow-sm hover:border-primary/40 transition-colors">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" data-icon="fingerprint">fingerprint</span>
+</div>
+<div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">FIDO2 &amp; Passkey Ready</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Seamless hardware-bound authentication utilizing Apple Touch ID, Face ID, and Windows Hello hardware enclaves.</p>
+</div>
+</div>
+<!-- Item 3: Device Integrity -->
+<div class="p-4 rounded-xl bg-surface-container-lowest/80 backdrop-blur-sm border border-outline-variant/30 flex items-start gap-4 shadow-sm hover:border-primary/40 transition-colors">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+<div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Device-Level Anomaly Detection</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Continuous session verification flags foreign IP jumps, atypical geographic velocity, and unauthorized API extraction attempts.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Trust Metrics Footer in Left Panel -->
+<div class="pt-8 border-t border-surface-variant/80 relative z-10 flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="shield">shield</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">SOC2 Type II &amp; HIPAA</span>
+</div>
+<div class="flex items-center gap-2 text-body-sm font-body-sm">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+          256-bit AES Active Tunnel
+        </div>
+</div>
+</section>
+<!-- RIGHT SIDE: Focused 2FA Verification Card -->
+<section class="lg:w-1/2 p-6 md:p-12 lg:p-16 flex items-center justify-center bg-surface">
+<div class="w-full max-w-md mx-auto">
+<!-- Back Navigation Link -->
+<a class="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors text-body-md font-body-md mb-8 group" href="#">
+<span class="material-symbols-outlined text-sm transition-transform group-hover:-translate-x-1" data-icon="arrow_back">arrow_back</span>
+          Back to login
+        </a>
+<!-- Form Card Container -->
+<div class="bg-surface-container-lowest rounded-[20px] p-6 sm:p-8 border border-outline-variant/40 shadow-[0px_4px_20px_-2px_rgba(31,41,37,0.04),0px_1px_3px_0px_rgba(31,41,37,0.02)]">
+<!-- Shield/Lock Icon Badge -->
+<div class="w-14 h-14 rounded-2xl bg-surface-container-low border border-primary/20 flex items-center justify-center text-primary mb-6 shadow-sm">
+<span class="material-symbols-outlined text-3xl" data-icon="shield_lock">shield_lock</span>
+</div>
+<!-- Header & Explanatory Copy -->
+<h2 class="text-headline-lg font-headline-lg text-on-surface tracking-tight mb-2">Two-Step Verification</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6">
+            We sent a 6-digit authentication code to <span class="font-semibold text-on-surface">ro***@example.com</span> and your registered Authenticator App. Enter it below to confirm your identity.
+          </p>
+<!-- Verification Code Input Grid -->
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider mb-3">Verification Code</label>
+<!-- 6 Separate Digit Inputs -->
+<div class="grid grid-cols-6 gap-2 sm:gap-3">
+<input class="w-full h-14 text-center font-metric-headline text-headline-lg rounded-xl border border-outline-variant/80 bg-surface-container-lowest text-on-surface focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" maxlength="1" type="text" value="4">
+<input class="w-full h-14 text-center font-metric-headline text-headline-lg rounded-xl border border-outline-variant/80 bg-surface-container-lowest text-on-surface focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" maxlength="1" type="text" value="8">
+<input class="w-full h-14 text-center font-metric-headline text-headline-lg rounded-xl border border-outline-variant/80 bg-surface-container-lowest text-on-surface focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" maxlength="1" type="text" value="2">
+<input class="w-full h-14 text-center font-metric-headline text-headline-lg rounded-xl border border-outline-variant/80 bg-surface-container-lowest text-on-surface focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" maxlength="1" type="text" value="9">
+<input autofocus="" class="w-full h-14 text-center font-metric-headline text-headline-lg rounded-xl border-2 border-primary bg-surface-container-lowest text-primary shadow-[0_0_0_3px_rgba(0,106,67,0.15)] outline-none transition-all" maxlength="1" placeholder="•" type="text">
+<input class="w-full h-14 text-center font-metric-headline text-headline-lg rounded-xl border border-outline-variant/80 bg-surface-container-lowest text-on-surface focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" maxlength="1" placeholder="•" type="text">
+</div>
+</div>
+<!-- Countdown Timer & Resend Trigger -->
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+                Resend code in <strong class="text-on-surface font-semibold">0:42</strong>
+</span>
+<button class="text-primary hover:text-primary-container font-label-interactive text-body-sm font-semibold transition-colors disabled:opacity-50" disabled="" type="button">
+                Resend SMS
+              </button>
+</div>
+<!-- Submit Action CTA -->
+<button class="w-full h-12 bg-primary hover:bg-primary-container text-on-primary rounded-full font-label-interactive text-label-interactive flex items-center justify-center gap-2 shadow-[0px_8px_24px_-2px_rgba(0,106,67,0.25)] active:scale-[0.98] transition-all duration-150" type="submit">
+<span>Verify &amp; Continue</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Recovery Fallback Option -->
+<div class="pt-2">
+<button class="w-full h-12 bg-surface-container-lowest hover:bg-surface-container-low text-on-surface border border-outline-variant/60 rounded-full font-label-interactive text-label-interactive transition-colors duration-150 flex items-center justify-center gap-2 active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-lg text-on-surface-variant" data-icon="key">key</span>
+                Use recovery code
+              </button>
+</div>
+</form>
+<!-- Security Metadata Footer inside Card -->
+<div class="mt-6 pt-5 border-t border-surface-variant/60 flex items-center justify-center gap-2 text-body-sm font-body-sm text-on-surface-variant text-center">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="lock">lock</span>
+<span>Secured with encryption · Session expires in 10 minutes</span>
+</div>
+</div>
+<!-- Help Prompt -->
+<p class="text-center text-body-sm font-body-sm text-on-surface-variant mt-6">
+          Lost access to your primary authenticator device? <br>
+<a class="text-primary font-semibold hover:underline" href="#">Contact NutriLens Security Desk</a>
+</p>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component Anchor) -->
+<footer class="w-full py-8 px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left bg-surface border-t border-surface-variant">
+<div class="flex flex-col md:flex-row items-center gap-3">
+<span class="text-headline-sm font-headline-sm text-primary font-bold">NutriLens AI</span>
+<span class="hidden md:inline text-outline-variant">•</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+        © 2025 NutriLens AI Inc. All rights reserved. Encrypted &amp; HIPAA Compliant.
+      </p>
+</div>
+<!-- Navigation links from Shared Components JSON -->
+<div class="flex flex-wrap justify-center items-center gap-6">
+<a class="text-on-surface-variant hover:text-primary text-body-sm font-body-sm transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none rounded-DEFAULT" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary text-body-sm font-body-sm transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none rounded-DEFAULT" href="#">Terms of Service</a>
+<a class="text-primary font-semibold text-body-sm font-body-sm transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none rounded-DEFAULT" href="#">Security Architecture</a>
+<a class="text-on-surface-variant hover:text-primary text-body-sm font-body-sm transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none rounded-DEFAULT" href="#">Status</a>
+<a class="text-on-surface-variant hover:text-primary text-body-sm font-body-sm transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none rounded-DEFAULT" href="#">Contact Support</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NutriLens - Body Details</title>
+<!-- Google Fonts: Plus Jakarta Sans & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#006a43",
+            "on-primary-fixed-variant": "#005233",
+            "primary-fixed-dim": "#69dca1",
+            "surface-container": "#e5f1ea",
+            "surface-tint": "#006c45",
+            "primary-fixed": "#86f9bc",
+            "surface-container-lowest": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-background": "#141e1a",
+            "error": "#ba1a1a",
+            "on-primary-fixed": "#002112",
+            "surface-dim": "#d1ddd6",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "tertiary-container": "#2170e4",
+            "background": "#f1fcf5",
+            "surface-container-highest": "#dae5df",
+            "secondary-fixed-dim": "#ffb68d",
+            "surface-bright": "#f1fcf5",
+            "on-secondary-fixed-variant": "#763300",
+            "surface-container-high": "#e0ebe4",
+            "outline": "#6d7a71",
+            "secondary-fixed": "#ffdbc9",
+            "secondary": "#9a4600",
+            "on-primary-container": "#f6fff6",
+            "inverse-surface": "#28332e",
+            "on-tertiary-fixed": "#001a42",
+            "on-secondary-fixed": "#321200",
+            "on-secondary": "#ffffff",
+            "on-surface": "#141e1a",
+            "surface-variant": "#dae5df",
+            "secondary-container": "#fe893c",
+            "primary-container": "#008656",
+            "surface-container-low": "#ebf6f0",
+            "outline-variant": "#bdcabf",
+            "surface": "#f1fcf5",
+            "on-tertiary-container": "#fefcff",
+            "on-tertiary-fixed-variant": "#004395",
+            "tertiary": "#0058be",
+            "tertiary-fixed-dim": "#adc6ff",
+            "on-secondary-container": "#672c00",
+            "tertiary-fixed": "#d8e2ff",
+            "on-tertiary": "#ffffff",
+            "inverse-primary": "#69dca1",
+            "inverse-on-surface": "#e8f3ed",
+            "on-surface-variant": "#3e4a41",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "1.75rem",
+            "gutter-mobile": "0.75rem",
+            "space-lg": "1.25rem",
+            "gutter": "1rem",
+            "margin": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "metric-headline": ["Plus Jakarta Sans"],
+            "label-caps": ["Inter"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Inter"],
+            "label-interactive": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "display-hero-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "800" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "metric-headline": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-interactive": ["15px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      appearance: none;
+      height: 22px;
+      width: 22px;
+      border-radius: 9999px;
+      background: #006a43;
+      border: 3px solid #ffffff;
+      box-shadow: 0 2px 6px rgba(0, 106, 67, 0.35);
+      cursor: pointer;
+      margin-top: -8px;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 6px;
+      cursor: pointer;
+      background: #dae5df;
+      border-radius: 9999px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col items-center">
+<!-- Mobile Viewport Container constrained to max-w-[600px] -->
+<div class="w-full max-w-[600px] min-h-screen bg-background flex flex-col shadow-sm relative pb-space-xl">
+<!-- Top Bar Component from Shared Anchor Blueprint -->
+<header class="bg-background dark:bg-inverse-surface sticky top-0 z-30">
+<div class="flex justify-between items-center w-full px-space-md py-space-sm max-w-[600px] mx-auto">
+<button aria-label="Back" class="w-10 h-10 rounded-full flex items-center justify-center text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<span class="text-headline-md font-headline-md font-extrabold text-primary dark:text-primary-fixed">NutriLens</span>
+<button class="text-label-interactive font-label-interactive text-on-surface-variant dark:text-surface-variant px-space-xs py-space-xs hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-150" type="button">Skip</button>
+</div>
+<!-- Step Progress Header -->
+<div class="px-space-md pb-space-sm pt-space-xs">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-primary font-bold">Step 3 of 4</span>
+<span class="font-body-sm text-body-sm font-semibold text-outline">75% completed</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-300" style="width: 75%;"></div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-space-md pt-space-sm space-y-space-lg">
+<!-- Section Header -->
+<div class="space-y-space-xs">
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">Tell us about your body</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Used to calculate your Basal Metabolic Rate (BMR) and daily energy burn.</p>
+</div>
+<!-- 1. Biological Sex -->
+<section class="bg-surface-container-lowest rounded-[20px] p-space-md border border-outline-variant/40 shadow-[0px_4px_20px_-2px_rgba(31,41,37,0.04)]">
+<div class="flex items-center justify-between mb-space-sm">
+<label class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="wc">wc</span>
+            Biological Sex
+          </label>
+<span class="font-body-sm text-body-sm text-outline">For baseline metabolic accuracy</span>
+</div>
+<!-- Segmented Control -->
+<div class="grid grid-cols-3 gap-1.5 bg-surface-container-low p-1.5 rounded-full border border-outline-variant/30">
+<button class="py-2.5 px-3 rounded-full font-label-interactive text-label-interactive text-on-surface-variant hover:text-on-surface transition-all flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="female">female</span>
+            Female
+          </button>
+<button class="py-2.5 px-3 rounded-full bg-primary text-on-primary font-label-interactive text-label-interactive shadow-sm flex items-center justify-center gap-1 transition-transform active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="male">male</span>
+            Male
+          </button>
+<button class="py-2.5 px-3 rounded-full font-label-interactive text-label-interactive text-on-surface-variant hover:text-on-surface transition-all flex items-center justify-center gap-1" type="button">
+            Other
+          </button>
+</div>
+</section>
+<!-- 2. Age Component -->
+<section class="bg-surface-container-lowest rounded-[20px] p-space-md border border-outline-variant/40 shadow-[0px_4px_20px_-2px_rgba(31,41,37,0.04)]">
+<div class="flex justify-between items-center mb-space-sm">
+<label class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="cake">cake</span>
+            Age
+          </label>
+<span class="font-body-sm text-body-sm text-primary font-medium">BMR Peak Reference</span>
+</div>
+<div class="flex items-center justify-between gap-4 py-space-xs">
+<!-- Stepper Minus -->
+<button aria-label="Decrease age" class="w-11 h-11 rounded-full border border-outline-variant/60 bg-surface-container-low text-on-surface flex items-center justify-center hover:bg-surface-container active:scale-90 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="remove">remove</span>
+</button>
+<!-- Numeric Display -->
+<div class="flex flex-col items-center">
+<div class="flex items-baseline gap-1">
+<span class="font-metric-headline text-metric-headline text-on-surface font-extrabold" id="age-val">28</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-medium">yrs</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Years Old</span>
+</div>
+<!-- Stepper Plus -->
+<button aria-label="Increase age" class="w-11 h-11 rounded-full border border-outline-variant/60 bg-surface-container-low text-on-surface flex items-center justify-center hover:bg-surface-container active:scale-90 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</button>
+</div>
+<!-- Slider Bar -->
+<div class="pt-space-sm px-1">
+<input class="w-full accent-primary" id="age-slider" max="80" min="18" oninput="document.getElementById('age-val').innerText = this.value" type="range" value="28">
+<div class="flex justify-between text-body-sm font-body-sm text-outline px-0.5 mt-1">
+<span>18 yrs</span>
+<span>45 yrs</span>
+<span>80 yrs</span>
+</div>
+</div>
+</section>
+<!-- 3. Height & 4. Weight in Bento Grid layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Height Card -->
+<section class="bg-surface-container-lowest rounded-[20px] p-space-md border border-outline-variant/40 shadow-[0px_4px_20px_-2px_rgba(31,41,37,0.04)] flex flex-col justify-between">
+<div class="flex justify-between items-center mb-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="height">height</span>
+              Height
+            </span>
+<!-- Toggle cm / ft-in -->
+<div class="flex items-center bg-surface-container-low p-1 rounded-full border border-outline-variant/30 text-xs">
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-semibold">cm</span>
+<span class="px-2 py-0.5 rounded-full text-on-surface-variant font-medium">ft-in</span>
+</div>
+</div>
+<div class="text-center my-space-xs">
+<div class="flex items-baseline justify-center gap-1">
+<span class="font-metric-headline text-metric-headline text-on-surface font-extrabold">175</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-semibold">cm</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline">Approx. 5' 9"</p>
+</div>
+<!-- Ruler Visual Simulation -->
+<div class="mt-space-sm bg-surface-container-low rounded-xl p-2.5 border border-outline-variant/20 flex flex-col items-center">
+<div class="w-full flex justify-between items-end h-7 px-1 text-outline">
+<span class="h-4 w-0.5 bg-outline-variant"></span>
+<span class="h-2 w-0.5 bg-outline-variant/50"></span>
+<span class="h-2 w-0.5 bg-outline-variant/50"></span>
+<span class="h-2 w-0.5 bg-outline-variant/50"></span>
+<span class="h-5 w-1 bg-primary rounded-full"></span>
+<span class="h-2 w-0.5 bg-outline-variant/50"></span>
+<span class="h-2 w-0.5 bg-outline-variant/50"></span>
+<span class="h-2 w-0.5 bg-outline-variant/50"></span>
+<span class="h-4 w-0.5 bg-outline-variant"></span>
+</div>
+<div class="flex justify-between w-full text-[10px] text-outline mt-1 font-mono">
+<span>170</span>
+<span class="text-primary font-bold">175</span>
+<span>180</span>
+</div>
+</div>
+</section>
+<!-- Current Weight Card -->
+<section class="bg-surface-container-lowest rounded-[20px] p-space-md border border-outline-variant/40 shadow-[0px_4px_20px_-2px_rgba(31,41,37,0.04)] flex flex-col justify-between">
+<div class="flex justify-between items-center mb-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="monitor_weight">monitor_weight</span>
+              Weight
+            </span>
+<!-- Toggle kg / lbs -->
+<div class="flex items-center bg-surface-container-low p-1 rounded-full border border-outline-variant/30 text-xs">
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-semibold">kg</span>
+<span class="px-2 py-0.5 rounded-full text-on-surface-variant font-medium">lbs</span>
+</div>
+</div>
+<div class="text-center my-space-xs">
+<div class="flex items-baseline justify-center gap-1">
+<span class="font-metric-headline text-metric-headline text-on-surface font-extrabold">74.5</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-semibold">kg</span>
+</div>
+<div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-semibold mt-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="flag">flag</span>
+              Target: 68.0 kg (-6.5 kg)
+            </div>
+</div>
+<!-- Quick Stepper Adjuster -->
+<div class="mt-space-sm flex items-center justify-between gap-2">
+<button class="flex-1 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-semibold text-xs border border-outline-variant/30 transition-all" type="button">-0.5</button>
+<span class="font-body-sm text-body-sm text-outline text-xs">Adjust</span>
+<button class="flex-1 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-semibold text-xs border border-outline-variant/30 transition-all" type="button">+0.5</button>
+</div>
+</section>
+</div>
+<!-- 5. Activity Level Selection -->
+<section class="bg-surface-container-lowest rounded-[20px] p-space-md border border-outline-variant/40 shadow-[0px_4px_20px_-2px_rgba(31,41,37,0.04)] space-y-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="directions_run">directions_run</span>
+            Physical Activity Level
+          </label>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Multiplier</span>
+</div>
+<div class="grid grid-cols-1 gap-2.5">
+<!-- Item 1: Sedentary -->
+<div class="p-3.5 rounded-xl border border-outline-variant/40 hover:border-primary/50 transition-all flex items-start gap-3 cursor-pointer bg-surface-bright">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="chair">chair</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold text-sm">Sedentary</span>
+<span class="text-xs text-outline font-medium">1.2x BMR</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Desk job, little to no regular exercise</p>
+</div>
+</div>
+<!-- Item 2: Lightly Active (Selected) -->
+<div class="p-3.5 rounded-xl border-2 border-primary bg-surface-container-low/60 shadow-[0px_4px_12px_rgba(0,106,67,0.08)] flex items-start gap-3 cursor-pointer relative overflow-hidden">
+<div class="w-9 h-9 rounded-lg bg-primary text-on-primary flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="nordic_walking">nordic_walking</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-bold text-sm flex items-center gap-1.5">
+                  Lightly Active
+                  <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+</span>
+<span class="text-xs text-primary font-bold">1.375x BMR</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface mt-0.5 font-medium">1-3 days/wk workout, 6,000-8,000 daily steps</p>
+</div>
+</div>
+<!-- Item 3: Moderately Active -->
+<div class="p-3.5 rounded-xl border border-outline-variant/40 hover:border-primary/50 transition-all flex items-start gap-3 cursor-pointer bg-surface-bright">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="fitness_center">fitness_center</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold text-sm">Moderately Active</span>
+<span class="text-xs text-outline font-medium">1.55x BMR</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">3-5 days/wk sports or intentional strength training</p>
+</div>
+</div>
+<!-- Item 4: Very Active -->
+<div class="p-3.5 rounded-xl border border-outline-variant/40 hover:border-primary/50 transition-all flex items-start gap-3 cursor-pointer bg-surface-bright">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="sprint">sprint</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold text-sm">Very Active</span>
+<span class="text-xs text-outline font-medium">1.725x BMR</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Heavy physical construction job or daily athlete training</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Floating Sticky Action -->
+<div class="pt-space-sm space-y-3">
+<!-- Primary Action Button with brand elevation -->
+<button class="w-full min-h-[52px] bg-primary text-on-primary rounded-full font-label-interactive text-label-interactive font-bold text-base flex items-center justify-center gap-2 shadow-[0px_8px_24px_-2px_rgba(0,106,67,0.35)] hover:opacity-95 active:scale-[0.98] transition-all" type="button">
+<span>Calculate My Nutrition Plan</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Privacy Shield & Micro Note -->
+<div class="flex items-center justify-center gap-1.5 py-1 text-center">
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="lock">lock</span>
+<span class="font-body-sm text-body-sm text-outline">Your health data is encrypted and never sold.</span>
+</div>
+</div>
+</main>
+</div>
+</body></html>

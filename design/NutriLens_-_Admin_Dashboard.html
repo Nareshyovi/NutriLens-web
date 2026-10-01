@@ -1,0 +1,1216 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NutriLens Admin - Overview &amp; System Operations</title>
+<!-- Google Fonts: Plus Jakarta Sans & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration matching NutriLens Design Tokens -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "background": "#f1fcf5",
+            "on-secondary": "#ffffff",
+            "inverse-primary": "#69dca1",
+            "surface-dim": "#d1ddd6",
+            "on-tertiary-container": "#fefcff",
+            "on-secondary-container": "#672c00",
+            "inverse-surface": "#28332e",
+            "primary-container": "#008656",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#321200",
+            "surface-container-low": "#ebf6f0",
+            "on-primary-fixed": "#002112",
+            "surface": "#f1fcf5",
+            "error": "#ba1a1a",
+            "secondary-fixed": "#ffdbc9",
+            "on-tertiary-fixed-variant": "#004395",
+            "outline-variant": "#bdcabf",
+            "secondary-container": "#fe893c",
+            "surface-tint": "#006c45",
+            "on-primary": "#ffffff",
+            "tertiary": "#0058be",
+            "error-container": "#ffdad6",
+            "on-background": "#141e1a",
+            "surface-variant": "#dae5df",
+            "on-surface-variant": "#3e4a41",
+            "surface-container": "#e5f1ea",
+            "tertiary-container": "#2170e4",
+            "on-tertiary-fixed": "#001a42",
+            "primary": "#006a43",
+            "secondary": "#9a4600",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed-dim": "#adc6ff",
+            "on-surface": "#141e1a",
+            "outline": "#6d7a71",
+            "primary-fixed-dim": "#69dca1",
+            "surface-container-high": "#e0ebe4",
+            "tertiary-fixed": "#d8e2ff",
+            "on-error-container": "#93000a",
+            "primary-fixed": "#86f9bc",
+            "surface-bright": "#f1fcf5",
+            "surface-container-highest": "#dae5df",
+            "on-error": "#ffffff",
+            "on-primary-fixed-variant": "#005233",
+            "on-secondary-fixed-variant": "#763300",
+            "inverse-on-surface": "#e8f3ed",
+            "secondary-fixed-dim": "#ffb68d",
+            "on-primary-container": "#f6fff6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.25rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.25rem",
+            "space-xl": "1.75rem",
+            "gutter": "1rem",
+            "margin": "1.25rem"
+          },
+          "fontFamily": {
+            "metric-headline": ["Plus Jakarta Sans"],
+            "label-caps": ["Inter"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-interactive": ["Plus Jakarta Sans"],
+            "body-md": ["Inter"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "metric-headline": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "label-interactive": ["15px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #f1fcf5;
+      font-family: 'Inter', sans-serif;
+      color: #141e1a;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-shadow-card {
+      box-shadow: 0px 4px 20px -2px rgba(31, 41, 37, 0.04), 0px 1px 3px 0px rgba(31, 41, 37, 0.02);
+    }
+    .custom-shadow-modal {
+      box-shadow: 0px 12px 32px -4px rgba(31, 41, 37, 0.08), 0px 4px 12px -2px rgba(31, 41, 37, 0.03);
+    }
+    /* Smooth custom scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #ebf6f0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #bdcabf;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6d7a71;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex min-h-screen">
+<!-- ============================================================ -->
+<!-- SIDE NAVIGATION (Shared Component: SideNavBar)               -->
+<!-- ============================================================ -->
+<aside class="fixed top-0 left-0 h-full w-64 flex flex-col justify-between p-space-md bg-surface-container-lowest border-r border-outline-variant z-50 shadow-sm">
+<!-- Brand & Workspace Header -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-space-xs py-space-xs">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-headline-md" style="font-variation-settings: 'FILL' 1;">nutrition</span>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-md font-headline-md text-primary font-bold tracking-tight">NutriLens Admin</span>
+<span class="text-label-caps font-label-caps text-outline tracking-wider">Enterprise Tier</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav aria-label="Main Administration Navigation" class="flex flex-col gap-1.5">
+<!-- Dashboard (Active) -->
+<a class="flex items-center gap-3 px-space-md py-space-sm rounded-xl bg-primary-container text-on-primary-container font-headline-sm transition-transform duration-100 scale-98" href="#overview">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-headline-sm font-headline-sm">Dashboard</span>
+</a>
+<!-- Users & Accounts -->
+<a class="flex items-center gap-3 px-space-md py-space-sm rounded-xl text-on-surface-variant font-headline-sm hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#users">
+<span class="material-symbols-outlined">group</span>
+<span class="text-headline-sm font-headline-sm">Users &amp; Accounts</span>
+</a>
+<!-- Food Database -->
+<a class="flex items-center gap-3 px-space-md py-space-sm rounded-xl text-on-surface-variant font-headline-sm hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#food-database">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="text-headline-sm font-headline-sm">Food Database</span>
+</a>
+<!-- AI Models & Logs -->
+<a class="flex items-center gap-3 px-space-md py-space-sm rounded-xl text-on-surface-variant font-headline-sm hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#ai-models">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="text-headline-sm font-headline-sm">AI Models &amp; Logs</span>
+</a>
+<!-- Audit Logs -->
+<a class="flex items-center gap-3 px-space-md py-space-sm rounded-xl text-on-surface-variant font-headline-sm hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#audit-logs">
+<span class="material-symbols-outlined">history</span>
+<span class="text-headline-sm font-headline-sm">Audit Logs</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-3 px-space-md py-space-sm rounded-xl text-on-surface-variant font-headline-sm hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#settings">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-headline-sm font-headline-sm">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Controls & CTA -->
+<div class="flex flex-col gap-3 pt-space-md border-t border-outline-variant">
+<!-- CTA Action Button -->
+<button class="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-surface-container-low text-primary font-headline-sm hover:bg-surface-container transition-colors duration-150 text-body-sm font-semibold border border-outline-variant" type="button">
+<span class="material-symbols-outlined text-headline-sm">download</span>
+        Export Global Logs
+      </button>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-space-md py-space-xs rounded-xl text-on-surface-variant font-headline-sm hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#support">
+<span class="material-symbols-outlined text-headline-sm">support_agent</span>
+<span class="text-body-sm font-body-sm font-medium">Support Desk</span>
+</a>
+<a class="flex items-center gap-3 px-space-md py-space-xs rounded-xl text-error font-headline-sm hover:bg-error-container/20 transition-colors" href="#signout">
+<span class="material-symbols-outlined text-headline-sm">logout</span>
+<span class="text-body-sm font-body-sm font-medium">Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- ============================================================ -->
+<!-- MAIN CONTENT CANVAS                                          -->
+<!-- ============================================================ -->
+<div class="ml-64 flex-1 flex flex-col min-w-0">
+<!-- TOP HEADER (Shared Component: TopNavBar) -->
+<header class="w-full px-space-lg py-space-sm flex justify-between items-center bg-surface-container-lowest border-b border-outline-variant shadow-sm sticky top-0 z-40">
+<!-- Left: Universal Search & Quick Context -->
+<div class="flex items-center gap-4 w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-headline-sm">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest text-on-surface text-body-md font-body-md rounded-xl border border-outline-variant focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-outline" placeholder="Search accounts, telemetry logs, foods..." type="search">
+</div>
+</div>
+<!-- Right: System Status, Trailing Action Icons, SuperAdmin Profile -->
+<div class="flex items-center gap-5">
+<!-- Live System Status Pill -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant text-primary text-body-sm font-medium">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+<span class="text-label-caps font-label-caps tracking-wide font-semibold">System Status: Online</span>
+</div>
+<div class="h-5 w-px bg-outline-variant"></div>
+<!-- Trailing Icon Buttons -->
+<div class="flex items-center gap-2">
+<!-- Notification Bell with Active Indicator Badge -->
+<button aria-label="Notifications" class="relative p-2 rounded-xl text-on-surface-variant hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-headline-sm">notifications</span>
+<span class="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span>
+</button>
+<!-- Help Desk -->
+<button aria-label="Help &amp; Documentation" class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-headline-sm">help</span>
+</button>
+</div>
+<div class="h-5 w-px bg-outline-variant"></div>
+<!-- SuperAdmin Profile Identifier -->
+<div class="flex items-center gap-3 pl-1">
+<div class="relative">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-headline-sm font-bold text-body-sm shadow-sm ring-2 ring-surface-container-low">
+              AV
+            </div>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-primary rounded-full ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col text-left">
+<span class="text-body-sm font-headline-sm font-semibold text-on-surface">Dr. Alistair Vance</span>
+<span class="text-label-caps font-label-caps text-primary font-bold">SuperAdmin</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN BODY CONTAINER -->
+<main class="p-space-lg space-y-6 max-w-7xl w-full mx-auto">
+<!-- ============================================================ -->
+<!-- TOP BANNER NOTICE: HIPAA & Zero-Knowledge Architecture       -->
+<!-- ============================================================ -->
+<section class="rounded-2xl bg-surface-container-low border border-outline-variant p-4 flex items-center justify-between gap-4 custom-shadow-card">
+<div class="flex items-start md:items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-headline-sm font-headline-sm text-on-surface">Privacy Guard Enabled: Account-level telemetry only</span>
+<span class="px-2 py-0.5 rounded-full bg-primary/15 text-primary text-label-caps font-label-caps font-bold">HIPAA Compliant</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Per strict HIPAA &amp; zero-knowledge security protocols, all personal health metrics, biometrics, macro goals, and meal photographs are cryptographically segregated and strictly inaccessible to administrative staff.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<a class="px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:text-on-surface text-body-sm font-medium transition-colors" href="#compliance">
+            Audit Cryptography
+          </a>
+</div>
+</section>
+<!-- ============================================================ -->
+<!-- SECTION 1: KEY METRICS CARDS (4 Grid Cards)                  -->
+<!-- ============================================================ -->
+<section aria-label="Key Operational Metrics" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+<!-- Card 1: Total Users -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-space-lg custom-shadow-card flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="flex items-center justify-between">
+<span class="text-label-caps font-label-caps text-outline uppercase tracking-wider">Total Registered Users</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-headline-sm">group</span>
+</div>
+</div>
+<div class="mt-4">
+<div class="text-metric-headline font-metric-headline text-on-surface tracking-tight">148,290</div>
+<div class="flex items-center gap-2 mt-1.5">
+<span class="inline-flex items-center gap-0.5 text-body-sm font-semibold text-primary">
+<span class="material-symbols-outlined text-headline-sm">trending_up</span>
+                +12.4%
+              </span>
+<span class="text-body-sm font-body-sm text-outline">MoM growth</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between text-body-sm text-on-surface-variant">
+<span>Verified emails</span>
+<span class="font-semibold text-on-surface">99.4%</span>
+</div>
+</div>
+<!-- Card 2: Daily Active Users (DAU) -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-space-lg custom-shadow-card flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="flex items-center justify-between">
+<span class="text-label-caps font-label-caps text-outline uppercase tracking-wider">Daily Active Users (DAU)</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-headline-sm">bolt</span>
+</div>
+</div>
+<div class="mt-4">
+<div class="text-metric-headline font-metric-headline text-on-surface tracking-tight">42,810</div>
+<div class="flex items-center gap-2 mt-1.5">
+<span class="inline-flex items-center gap-0.5 text-body-sm font-semibold text-primary">
+<span class="material-symbols-outlined text-headline-sm">trending_up</span>
+                +8.1%
+              </span>
+<span class="text-body-sm font-body-sm text-outline">vs yesterday</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between text-body-sm text-on-surface-variant">
+<span>Peak concurrence</span>
+<span class="font-semibold text-on-surface">8,920 at 1:15 PM</span>
+</div>
+</div>
+<!-- Card 3: AI Requests Today -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-space-lg custom-shadow-card flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="flex items-center justify-between">
+<span class="text-label-caps font-label-caps text-outline uppercase tracking-wider">AI Inferences Today</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-headline-sm">psychology</span>
+</div>
+</div>
+<div class="mt-4">
+<div class="text-metric-headline font-metric-headline text-on-surface tracking-tight">312,450</div>
+<div class="flex items-center gap-2 mt-1.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-caps font-label-caps bg-primary/10 text-primary">
+                99.8% Uptime
+              </span>
+<span class="text-body-sm font-body-sm text-outline">Vision + Voice</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between text-body-sm text-on-surface-variant">
+<span>Avg response</span>
+<span class="font-semibold text-on-surface">240ms</span>
+</div>
+</div>
+<!-- Card 4: AI Error Rate -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-space-lg custom-shadow-card flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="flex items-center justify-between">
+<span class="text-label-caps font-label-caps text-outline uppercase tracking-wider">Model Error Rate</span>
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-headline-sm">check_circle</span>
+</div>
+</div>
+<div class="mt-4">
+<div class="text-metric-headline font-metric-headline text-primary tracking-tight">0.18%</div>
+<div class="flex items-center gap-2 mt-1.5">
+<span class="inline-flex items-center gap-0.5 text-body-sm font-semibold text-primary">
+<span class="material-symbols-outlined text-headline-sm">trending_down</span>
+                -0.04%
+              </span>
+<span class="text-body-sm font-body-sm text-outline">Optimal (&lt; 0.5%)</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between text-body-sm text-on-surface-variant">
+<span>Edge Fallbacks</span>
+<span class="font-semibold text-on-surface">14 total</span>
+</div>
+</div>
+</section>
+<!-- ============================================================ -->
+<!-- SECTION 2: AI USAGE & VISION INFERENCE ACTIVITY              -->
+<!-- ============================================================ -->
+<section class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-space-lg custom-shadow-card">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-surface-container">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">AI Model Inference &amp; Volume Dynamics</h2>
+<p class="text-body-sm font-body-sm text-outline">Hourly aggregated request workloads across Multimodal Vision, Whisper Voice Parsing, and Barcode Scanners.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex rounded-xl bg-surface-container-low p-1 border border-outline-variant text-body-sm">
+<button class="px-3 py-1 font-semibold rounded-lg bg-surface-container-lowest text-primary shadow-sm" type="button">Last 24 Hours</button>
+<button class="px-3 py-1 font-medium text-on-surface-variant hover:text-on-surface transition-colors" type="button">7 Days</button>
+<button class="px-3 py-1 font-medium text-on-surface-variant hover:text-on-surface transition-colors" type="button">30 Days</button>
+</div>
+<button class="p-2 rounded-xl border border-outline-variant hover:bg-surface-container transition-colors text-on-surface-variant" title="Refresh metrics" type="button">
+<span class="material-symbols-outlined text-headline-sm">sync</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-6 pt-5">
+<!-- Left 3 cols: Detailed SVG Visual Chart -->
+<div class="lg:col-span-3 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-4 text-body-sm">
+<span class="flex items-center gap-2 font-medium text-on-surface">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+                  Active Total Throughput
+                </span>
+<span class="flex items-center gap-2 text-outline">
+<span class="w-3 h-3 rounded-full bg-outline-variant"></span>
+                  Rolling 7-Day Baseline
+                </span>
+</div>
+<span class="text-label-caps font-label-caps text-outline">Hourly Spikes correlated to Meal Windows</span>
+</div>
+<!-- High Fidelity Vector Line Chart -->
+<div class="relative w-full h-64 bg-surface-container-low/40 rounded-xl p-4 border border-outline-variant flex flex-col justify-end">
+<!-- Y Axis Reference Markers -->
+<div class="absolute inset-0 p-4 pointer-events-none flex flex-col justify-between text-label-caps font-label-caps text-outline opacity-40">
+<div class="border-b border-dashed border-outline-variant pb-1 flex justify-between"><span>35k req/hr</span><span>Peak Lunch Window</span></div>
+<div class="border-b border-dashed border-outline-variant pb-1"><span>25k req/hr</span></div>
+<div class="border-b border-dashed border-outline-variant pb-1"><span>15k req/hr</span></div>
+<div class="border-b border-dashed border-outline-variant pb-1"><span>5k req/hr</span></div>
+</div>
+<!-- SVG Curve Drawing -->
+<svg class="w-full h-44 overflow-visible" preserveAspectRatio="none" viewBox="0 0 1000 200">
+<defs>
+<linearGradient id="primaryAreaGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#006a43" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#006a43" stop-opacity="0.0"></stop>
+</linearGradient>
+</defs>
+<!-- Baseline comparison line -->
+<path d="M 0 160 Q 125 155, 250 80 T 500 50 T 750 90 T 1000 130" fill="none" stroke="#bdcabf" stroke-dasharray="4 4" stroke-width="2"></path>
+<!-- Active Day Gradient Area -->
+<path d="M 0 170 
+                         C 120 165, 180 150, 220 70 
+                         C 260 30, 320 110, 380 120 
+                         C 440 130, 480 35, 540 25 
+                         C 600 20, 640 110, 700 115 
+                         C 760 120, 800 45, 860 35 
+                         C 910 28, 960 95, 1000 140 
+                         L 1000 200 L 0 200 Z" fill="url(#primaryAreaGrad)"></path>
+<!-- Active Day Solid Stroke -->
+<path d="M 0 170 
+                         C 120 165, 180 150, 220 70 
+                         C 260 30, 320 110, 380 120 
+                         C 440 130, 480 35, 540 25 
+                         C 600 20, 640 110, 700 115 
+                         C 760 120, 800 45, 860 35 
+                         C 910 28, 960 95, 1000 140" fill="none" stroke="#006a43" stroke-linecap="round" stroke-width="3"></path>
+<!-- Spikes points & tooltip markers -->
+<!-- Breakfast: 8am (around 220) -->
+<circle cx="220" cy="70" fill="#006a43" r="5" stroke="#ffffff" stroke-width="2"></circle>
+<!-- Lunch Peak: 1pm (around 540) -->
+<circle cx="540" cy="25" fill="#008656" r="6" stroke="#ffffff" stroke-width="3"></circle>
+<!-- Dinner Peak: 8pm (around 860) -->
+<circle cx="860" cy="35" fill="#006a43" r="5" stroke="#ffffff" stroke-width="2"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="flex justify-between items-center text-label-caps font-label-caps text-outline pt-2 border-t border-outline-variant">
+<span>00:00</span>
+<span>04:00</span>
+<span class="text-primary font-bold">08:00 (Breakfast)</span>
+<span>10:00</span>
+<span class="text-primary font-bold">13:00 (Lunch Peak)</span>
+<span>16:00</span>
+<span class="text-primary font-bold">20:00 (Dinner Peak)</span>
+<span>23:00</span>
+</div>
+</div>
+</div>
+<!-- Right 1 col: Modality Breakdown Metrics -->
+<div class="flex flex-col justify-between space-y-4 bg-surface-container-low/50 p-4 rounded-xl border border-outline-variant">
+<div>
+<span class="text-label-caps font-label-caps text-outline uppercase tracking-wider">Inference Breakdown</span>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mt-1">Modality Distribution</h3>
+</div>
+<!-- Vision Inferences -->
+<div class="space-y-1.5">
+<div class="flex justify-between text-body-sm">
+<span class="font-medium text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-body-md text-primary">camera</span>
+                  Computer Vision
+                </span>
+<span class="font-bold text-on-surface">74% <span class="text-outline font-normal">(231.2k)</span></span>
+</div>
+<div class="w-full h-2 rounded-full bg-outline-variant/40 overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 74%"></div>
+</div>
+</div>
+<!-- Voice Parsing -->
+<div class="space-y-1.5">
+<div class="flex justify-between text-body-sm">
+<span class="font-medium text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-body-md text-tertiary">mic</span>
+                  Voice Parsing
+                </span>
+<span class="font-bold text-on-surface">19% <span class="text-outline font-normal">(59.3k)</span></span>
+</div>
+<div class="w-full h-2 rounded-full bg-outline-variant/40 overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 19%"></div>
+</div>
+</div>
+<!-- Barcode & Manual OCR -->
+<div class="space-y-1.5">
+<div class="flex justify-between text-body-sm">
+<span class="font-medium text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-body-md text-secondary-container">barcode_scanner</span>
+                  Barcode / OCR
+                </span>
+<span class="font-bold text-on-surface">7% <span class="text-outline font-normal">(21.9k)</span></span>
+</div>
+<div class="w-full h-2 rounded-full bg-outline-variant/40 overflow-hidden">
+<div class="h-full bg-secondary-container rounded-full" style="width: 7%"></div>
+</div>
+</div>
+<!-- Latency Gauge Card -->
+<div class="pt-3 border-t border-outline-variant flex items-center justify-between">
+<div>
+<div class="text-label-caps font-label-caps text-outline">Median Latency</div>
+<div class="text-headline-md font-headline-md font-bold text-primary">240 ms</div>
+</div>
+<div class="px-2.5 py-1 rounded-lg bg-primary/10 text-primary text-body-sm font-semibold">
+                p95: 390ms
+              </div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================================ -->
+<!-- SECTION 3: USERS MANAGEMENT TABLE (Account-Level Only)        -->
+<!-- ============================================================ -->
+<section class="bg-surface-container-lowest rounded-2xl border border-outline-variant custom-shadow-card overflow-hidden" id="users">
+<!-- Table Control Toolbar -->
+<div class="p-space-lg border-b border-surface-container flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2">
+<h2 class="text-headline-lg font-headline-lg text-on-surface">User Accounts &amp; Authentication</h2>
+<span class="px-2.5 py-0.5 rounded-full text-label-caps font-label-caps bg-surface-container-high text-on-surface-variant font-bold">148.2k Total</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline mt-0.5">Strictly account identity, security status, and license lifecycle. Zero health logs stored here.</p>
+</div>
+<!-- Filters & Actions -->
+<div class="flex flex-wrap items-center gap-3">
+<!-- Search input -->
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-headline-sm">search</span>
+<input class="w-full pl-9 pr-3 py-1.5 bg-surface-container-low text-body-sm text-on-surface rounded-xl border border-outline-variant focus:outline-none focus:border-primary placeholder:text-outline" placeholder="Search by name, email, ID..." type="text">
+</div>
+<!-- Status Tabs -->
+<div class="flex rounded-xl bg-surface-container-low p-1 border border-outline-variant text-body-sm font-medium">
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-lowest text-primary shadow-sm font-semibold" type="button">All</button>
+<button class="px-2.5 py-1 text-on-surface-variant hover:text-on-surface" type="button">Active</button>
+<button class="px-2.5 py-1 text-on-surface-variant hover:text-on-surface" type="button">Inactive</button>
+<button class="px-2.5 py-1 text-on-surface-variant hover:text-on-surface" type="button">Suspended</button>
+</div>
+<!-- Export CSV -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-outline-variant bg-surface-container-lowest text-body-sm font-medium text-on-surface hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-headline-sm">file_download</span>
+              Export CSV
+            </button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left text-body-sm text-on-surface border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant text-label-caps font-label-caps text-outline uppercase tracking-wider">
+<th class="py-3.5 px-6" scope="col">User Account</th>
+<th class="py-3.5 px-4" scope="col">Account Tier</th>
+<th class="py-3.5 px-4" scope="col">Status</th>
+<th class="py-3.5 px-4" scope="col">2FA Enforced</th>
+<th class="py-3.5 px-4" scope="col">Last Active</th>
+<th class="py-3.5 px-4" scope="col">Created Date</th>
+<th class="py-3.5 px-6 text-right" scope="col">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/50">
+<!-- Row 1: Priya Sharma -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-body-sm">
+                      PS
+                    </div>
+<div class="flex flex-col">
+<span class="font-headline-sm font-semibold text-on-surface">Priya Sharma</span>
+<span class="text-body-sm text-outline">priya.sharma@example.com</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-caps font-label-caps bg-primary text-on-primary font-bold">
+                    PRO SUBSCRIBER
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-label-caps font-label-caps bg-primary/15 text-primary font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Active
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 text-primary text-body-sm font-semibold">
+<span class="material-symbols-outlined text-headline-sm" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                    Yes
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant font-medium">12 mins ago</td>
+<td class="py-3.5 px-4 text-outline">Oct 14, 2023</td>
+<td class="py-3.5 px-6 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" title="View Account Meta" type="button">
+<span class="material-symbols-outlined text-headline-sm">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-tertiary hover:bg-surface-container transition-colors" title="Reset MFA" type="button">
+<span class="material-symbols-outlined text-headline-sm">lock_reset</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-error hover:bg-error-container/20 transition-colors" title="Suspend User" type="button">
+<span class="material-symbols-outlined text-headline-sm">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Marcus Vance -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-tertiary/10 text-tertiary font-bold flex items-center justify-center text-body-sm">
+                      MV
+                    </div>
+<div class="flex flex-col">
+<span class="font-headline-sm font-semibold text-on-surface">Marcus Vance</span>
+<span class="text-body-sm text-outline">m.vance@techfleet.io</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-caps font-label-caps bg-primary text-on-primary font-bold">
+                    PRO SUBSCRIBER
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-label-caps font-label-caps bg-primary/15 text-primary font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Active
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 text-primary text-body-sm font-semibold">
+<span class="material-symbols-outlined text-headline-sm" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                    Yes
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant font-medium">1 hour ago</td>
+<td class="py-3.5 px-4 text-outline">Jan 09, 2024</td>
+<td class="py-3.5 px-6 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" title="View Account Meta" type="button">
+<span class="material-symbols-outlined text-headline-sm">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-tertiary hover:bg-surface-container transition-colors" title="Reset MFA" type="button">
+<span class="material-symbols-outlined text-headline-sm">lock_reset</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-error hover:bg-error-container/20 transition-colors" title="Suspend User" type="button">
+<span class="material-symbols-outlined text-headline-sm">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Ananya Patel -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface font-bold flex items-center justify-center text-body-sm">
+                      AP
+                    </div>
+<div class="flex flex-col">
+<span class="font-headline-sm font-semibold text-on-surface">Ananya Patel</span>
+<span class="text-body-sm text-outline">ananya.patel@healthnet.in</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-caps font-label-caps bg-surface-container-high text-on-surface-variant font-bold">
+                    FREE TIER
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-label-caps font-label-caps bg-primary/15 text-primary font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Active
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 text-outline text-body-sm font-medium">
+<span class="material-symbols-outlined text-headline-sm">shield</span>
+                    No
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant font-medium">3 hours ago</td>
+<td class="py-3.5 px-4 text-outline">Feb 22, 2024</td>
+<td class="py-3.5 px-6 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" title="View Account Meta" type="button">
+<span class="material-symbols-outlined text-headline-sm">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-tertiary hover:bg-surface-container transition-colors" title="Reset MFA" type="button">
+<span class="material-symbols-outlined text-headline-sm">lock_reset</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-error hover:bg-error-container/20 transition-colors" title="Suspend User" type="button">
+<span class="material-symbols-outlined text-headline-sm">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Liam O'Connor -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold flex items-center justify-center text-body-sm">
+                      LO
+                    </div>
+<div class="flex flex-col">
+<span class="font-headline-sm font-semibold text-on-surface">Liam O'Connor</span>
+<span class="text-body-sm text-outline">liam.oc@dublingym.ie</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-caps font-label-caps bg-primary text-on-primary font-bold">
+                    PRO SUBSCRIBER
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-label-caps font-label-caps bg-surface-container-high text-outline font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                    Inactive
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 text-primary text-body-sm font-semibold">
+<span class="material-symbols-outlined text-headline-sm" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                    Yes
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant font-medium">8 days ago</td>
+<td class="py-3.5 px-4 text-outline">Aug 11, 2023</td>
+<td class="py-3.5 px-6 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" title="View Account Meta" type="button">
+<span class="material-symbols-outlined text-headline-sm">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-tertiary hover:bg-surface-container transition-colors" title="Reset MFA" type="button">
+<span class="material-symbols-outlined text-headline-sm">lock_reset</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-error hover:bg-error-container/20 transition-colors" title="Suspend User" type="button">
+<span class="material-symbols-outlined text-headline-sm">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Fatima Al-Zahra -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary-fixed-dim text-on-primary-fixed font-bold flex items-center justify-center text-body-sm">
+                      FA
+                    </div>
+<div class="flex flex-col">
+<span class="font-headline-sm font-semibold text-on-surface">Fatima Al-Zahra</span>
+<span class="text-body-sm text-outline">fatima.zahra@gulfmed.ae</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-caps font-label-caps bg-primary text-on-primary font-bold">
+                    PRO SUBSCRIBER
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-label-caps font-label-caps bg-primary/15 text-primary font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Active
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 text-primary text-body-sm font-semibold">
+<span class="material-symbols-outlined text-headline-sm" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                    Yes
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant font-medium">Just now</td>
+<td class="py-3.5 px-4 text-outline">Nov 30, 2023</td>
+<td class="py-3.5 px-6 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" title="View Account Meta" type="button">
+<span class="material-symbols-outlined text-headline-sm">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-tertiary hover:bg-surface-container transition-colors" title="Reset MFA" type="button">
+<span class="material-symbols-outlined text-headline-sm">lock_reset</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-error hover:bg-error-container/20 transition-colors" title="Suspend User" type="button">
+<span class="material-symbols-outlined text-headline-sm">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: David Chen -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-error-container text-on-error-container font-bold flex items-center justify-center text-body-sm">
+                      DC
+                    </div>
+<div class="flex flex-col">
+<span class="font-headline-sm font-semibold text-on-surface">David Chen</span>
+<span class="text-body-sm text-outline">d.chen@caloptima.org</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-caps font-label-caps bg-surface-container-high text-on-surface-variant font-bold">
+                    FREE TIER
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-label-caps font-label-caps bg-error-container/40 text-error font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                    Suspended
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 text-outline text-body-sm font-medium">
+<span class="material-symbols-outlined text-headline-sm">shield</span>
+                    No
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant font-medium">19 days ago</td>
+<td class="py-3.5 px-4 text-outline">May 19, 2023</td>
+<td class="py-3.5 px-6 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" title="View Account Meta" type="button">
+<span class="material-symbols-outlined text-headline-sm">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-tertiary hover:bg-surface-container transition-colors" title="Reset MFA" type="button">
+<span class="material-symbols-outlined text-headline-sm">lock_reset</span>
+</button>
+<button class="p-1.5 rounded-lg text-primary hover:bg-primary-container/20 transition-colors" title="Unsuspend User" type="button">
+<span class="material-symbols-outlined text-headline-sm">check_circle</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-6 py-3.5 bg-surface-container-low border-t border-outline-variant flex items-center justify-between text-body-sm text-outline">
+<div>Showing <span class="font-semibold text-on-surface">1 - 6</span> of <span class="font-semibold text-on-surface">148,290</span> accounts</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container disabled:opacity-50" disabled="" type="button">Previous</button>
+<button class="px-3 py-1 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container" type="button">Next</button>
+</div>
+</div>
+</section>
+<!-- ============================================================ -->
+<!-- SECTION 4: FOOD DATABASE MANAGER (Regional & Global)         -->
+<!-- ============================================================ -->
+<section class="bg-surface-container-lowest rounded-2xl border border-outline-variant custom-shadow-card overflow-hidden" id="food-database">
+<!-- Header Toolbar -->
+<div class="p-space-lg border-b border-surface-container flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-3">
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Food Database Manager</h2>
+<span class="px-2.5 py-0.5 rounded-full text-label-caps font-label-caps bg-primary/10 text-primary font-bold">18,420 Items Verified</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline mt-0.5">High-accuracy nutrition profiles with regional Indian staples and global ingredients cataloged for the AI Vision Engine.</p>
+</div>
+<!-- Add Food Item Primary Pill Button -->
+<button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-on-primary font-headline-sm font-semibold hover:bg-primary-container active:scale-98 transition-all shadow-sm" onclick="document.getElementById('editModal').classList.remove('hidden')" type="button">
+<span class="material-symbols-outlined text-headline-sm">add</span>
+            + Add Food Item
+          </button>
+</div>
+<!-- Filter Sub-bar: Search & Categories -->
+<div class="px-space-lg py-3 bg-surface-container-low border-b border-outline-variant flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-3 flex-1 min-w-[280px]">
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-headline-sm">search</span>
+<input class="w-full pl-9 pr-3 py-1.5 bg-surface-container-lowest text-body-sm text-on-surface rounded-xl border border-outline-variant focus:outline-none focus:border-primary placeholder:text-outline" placeholder="Search items like Roti, Paneer, Dal..." type="text">
+</div>
+<!-- Category Chips -->
+<div class="hidden xl:flex items-center gap-2 text-body-sm">
+<button class="px-3 py-1 rounded-full bg-primary text-on-primary font-semibold text-body-sm" type="button">All</button>
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:text-on-surface" type="button">Breads &amp; Rotis</button>
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:text-on-surface" type="button">Curries &amp; Dals</button>
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:text-on-surface" type="button">Dairy</button>
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:text-on-surface" type="button">Rice &amp; Grains</button>
+</div>
+</div>
+<div class="flex items-center gap-2 text-body-sm text-outline">
+<span>Filter by:</span>
+<select class="py-1 px-2.5 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-sm text-on-surface focus:outline-none focus:border-primary">
+<option>All Verifications</option>
+<option>Verified by AI Lab</option>
+<option>Community Reviewed</option>
+</select>
+</div>
+</div>
+<!-- Food Items Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left text-body-sm text-on-surface border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest border-b border-outline-variant text-label-caps font-label-caps text-outline uppercase tracking-wider">
+<th class="py-3 px-6" scope="col">Item Name &amp; Tag</th>
+<th class="py-3 px-4" scope="col">Serving Base</th>
+<th class="py-3 px-4" scope="col">Energy</th>
+<th class="py-3 px-4" scope="col">Protein</th>
+<th class="py-3 px-4" scope="col">Carbs</th>
+<th class="py-3 px-4" scope="col">Fat</th>
+<th class="py-3 px-4" scope="col">Verification</th>
+<th class="py-3 px-6 text-right" scope="col">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/40">
+<!-- Food 1: Whole Wheat Roti -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed/50 text-secondary font-bold flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-headline-md">bakery_dining</span>
+</div>
+<div>
+<div class="font-headline-sm font-semibold text-on-surface">Whole Wheat Roti (Phulka)</div>
+<span class="inline-block px-1.5 py-0.5 mt-0.5 rounded text-label-caps font-label-caps bg-surface-container text-on-surface-variant">Indian Staple</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface font-medium">1 medium (45g)</td>
+<td class="py-3 px-4 font-bold text-on-surface">120 <span class="text-outline text-body-sm font-normal">kcal</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-tertiary bg-tertiary/10 font-semibold">3.8g</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-secondary bg-secondary-fixed/40 font-semibold">24.2g</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-outline font-semibold">1.1g</span></td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 text-primary text-body-sm font-semibold">
+<span class="material-symbols-outlined text-headline-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    AI Lab Verified
+                  </span>
+</td>
+<td class="py-3 px-6 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" onclick="document.getElementById('editModal').classList.remove('hidden')" title="Edit Macro Profile" type="button">
+<span class="material-symbols-outlined text-headline-sm">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-error hover:bg-error-container/20 transition-colors" title="Archive Item" type="button">
+<span class="material-symbols-outlined text-headline-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Food 2: Yellow Dal Tadka -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed/50 text-secondary font-bold flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-headline-md">soup_kitchen</span>
+</div>
+<div>
+<div class="font-headline-sm font-semibold text-on-surface">Yellow Dal Tadka</div>
+<span class="inline-block px-1.5 py-0.5 mt-0.5 rounded text-label-caps font-label-caps bg-surface-container text-on-surface-variant">Curry &amp; Lentils</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface font-medium">1 standard bowl (150g)</td>
+<td class="py-3 px-4 font-bold text-on-surface">184 <span class="text-outline text-body-sm font-normal">kcal</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-tertiary bg-tertiary/10 font-semibold">9.4g</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-secondary bg-secondary-fixed/40 font-semibold">22.8g</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-outline font-semibold">6.2g</span></td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 text-primary text-body-sm font-semibold">
+<span class="material-symbols-outlined text-headline-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    AI Lab Verified
+                  </span>
+</td>
+<td class="py-3 px-6 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" onclick="document.getElementById('editModal').classList.remove('hidden')" title="Edit Macro Profile" type="button">
+<span class="material-symbols-outlined text-headline-sm">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-error hover:bg-error-container/20 transition-colors" title="Archive Item" type="button">
+<span class="material-symbols-outlined text-headline-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Food 3: Paneer Tikka -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/10 text-primary font-bold flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-headline-md">kebab_dining</span>
+</div>
+<div>
+<div class="font-headline-sm font-semibold text-on-surface">Paneer Tikka (Tandoori)</div>
+<span class="inline-block px-1.5 py-0.5 mt-0.5 rounded text-label-caps font-label-caps bg-surface-container text-on-surface-variant">High Protein Dairy</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface font-medium">5 cubes (120g)</td>
+<td class="py-3 px-4 font-bold text-on-surface">265 <span class="text-outline text-body-sm font-normal">kcal</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-tertiary bg-tertiary/10 font-semibold">16.8g</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-secondary bg-secondary-fixed/40 font-semibold">7.4g</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-outline font-semibold">18.5g</span></td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 text-primary text-body-sm font-semibold">
+<span class="material-symbols-outlined text-headline-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    AI Lab Verified
+                  </span>
+</td>
+<td class="py-3 px-6 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" onclick="document.getElementById('editModal').classList.remove('hidden')" title="Edit Macro Profile" type="button">
+<span class="material-symbols-outlined text-headline-sm">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-error hover:bg-error-container/20 transition-colors" title="Archive Item" type="button">
+<span class="material-symbols-outlined text-headline-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Food 4: Brown Basmati Rice -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high text-on-surface font-bold flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-headline-md">rice_bowl</span>
+</div>
+<div>
+<div class="font-headline-sm font-semibold text-on-surface">Brown Basmati Rice (Cooked)</div>
+<span class="inline-block px-1.5 py-0.5 mt-0.5 rounded text-label-caps font-label-caps bg-surface-container text-on-surface-variant">Complex Carbohydrate</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface font-medium">1 cup (155g)</td>
+<td class="py-3 px-4 font-bold text-on-surface">216 <span class="text-outline text-body-sm font-normal">kcal</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-tertiary bg-tertiary/10 font-semibold">5.0g</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-secondary bg-secondary-fixed/40 font-semibold">45.0g</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-outline font-semibold">1.8g</span></td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 text-on-surface-variant text-body-sm font-medium">
+<span class="material-symbols-outlined text-headline-sm">groups</span>
+                    Community Reviewed
+                  </span>
+</td>
+<td class="py-3 px-6 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" onclick="document.getElementById('editModal').classList.remove('hidden')" title="Edit Macro Profile" type="button">
+<span class="material-symbols-outlined text-headline-sm">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-error hover:bg-error-container/20 transition-colors" title="Archive Item" type="button">
+<span class="material-symbols-outlined text-headline-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Food 5: Greek Yogurt 0% -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-tertiary/10 text-tertiary font-bold flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-headline-md">egg_alt</span>
+</div>
+<div>
+<div class="font-headline-sm font-semibold text-on-surface">Greek Yogurt (0% Fat Plain)</div>
+<span class="inline-block px-1.5 py-0.5 mt-0.5 rounded text-label-caps font-label-caps bg-surface-container text-on-surface-variant">Global Dairy</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface font-medium">1 cup (170g)</td>
+<td class="py-3 px-4 font-bold text-on-surface">100 <span class="text-outline text-body-sm font-normal">kcal</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-tertiary bg-tertiary/10 font-semibold">18.0g</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-secondary bg-secondary-fixed/40 font-semibold">6.0g</span></td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-outline font-semibold">0.0g</span></td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 text-primary text-body-sm font-semibold">
+<span class="material-symbols-outlined text-headline-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    AI Lab Verified
+                  </span>
+</td>
+<td class="py-3 px-6 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" onclick="document.getElementById('editModal').classList.remove('hidden')" title="Edit Macro Profile" type="button">
+<span class="material-symbols-outlined text-headline-sm">edit</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-error hover:bg-error-container/20 transition-colors" title="Archive Item" type="button">
+<span class="material-symbols-outlined text-headline-sm">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer -->
+<div class="px-6 py-3.5 bg-surface-container-low border-t border-outline-variant flex items-center justify-between text-body-sm text-outline">
+<div>Showing <span class="font-semibold text-on-surface">5</span> of <span class="font-semibold text-on-surface">18,420</span> verified items</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container" type="button">Previous</button>
+<button class="px-3 py-1 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container" type="button">Next</button>
+</div>
+</div>
+</section>
+<!-- System Health Footer Metadata -->
+<footer class="pt-4 pb-8 flex flex-col md:flex-row items-center justify-between text-body-sm text-outline border-t border-outline-variant/60">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-body-md text-primary">lock</span>
+<span>Zero-Knowledge Multi-Tenant Architecture • NutriLens Core v4.2.1-prod</span>
+</div>
+<div class="flex items-center gap-4 mt-2 md:mt-0">
+<span>Server Region: us-east-1 (N. Virginia)</span>
+<span>•</span>
+<span>Inference Engine: VisionTransformer-L14</span>
+</div>
+</footer>
+</main>
+</div>
+<!-- ============================================================ -->
+<!-- INTERACTIVE MODAL PREVIEW: ADD / EDIT FOOD ITEM              -->
+<!-- ============================================================ -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center bg-inverse-surface/60 backdrop-blur-sm p-4" id="editModal">
+<div class="bg-surface-container-lowest w-full max-w-xl rounded-3xl border border-outline-variant custom-shadow-modal overflow-hidden flex flex-col">
+<!-- Modal Header -->
+<div class="px-6 py-4 border-b border-surface-container flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-headline-sm">edit_note</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Edit Nutritional Profile</h3>
+</div>
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container transition-colors" onclick="document.getElementById('editModal').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Form Body -->
+<form class="p-6 space-y-4" onsubmit="event.preventDefault(); document.getElementById('editModal').classList.add('hidden');">
+<div>
+<label class="block text-label-caps font-label-caps text-outline uppercase tracking-wider mb-1">Item Title (Common Name)</label>
+<input class="w-full px-3.5 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-xl text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" type="text" value="Whole Wheat Roti (Phulka)">
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-label-caps font-label-caps text-outline uppercase tracking-wider mb-1">Regional Category</label>
+<input class="w-full px-3.5 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-xl text-body-md text-on-surface focus:outline-none focus:border-primary" type="text" value="Indian Staple">
+</div>
+<div>
+<label class="block text-label-caps font-label-caps text-outline uppercase tracking-wider mb-1">Standard Serving Base</label>
+<input class="w-full px-3.5 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-xl text-body-md text-on-surface focus:outline-none focus:border-primary" type="text" value="1 medium (45g)">
+</div>
+</div>
+<div class="p-4 rounded-2xl bg-surface-container-low border border-outline-variant space-y-3">
+<div class="text-headline-sm font-headline-sm text-on-surface">Base Macronutrient Density</div>
+<div class="grid grid-cols-4 gap-3">
+<div>
+<label class="block text-label-caps font-label-caps text-outline mb-1">Calories</label>
+<input class="w-full px-2.5 py-1.5 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-md font-bold text-on-surface" type="number" value="120">
+</div>
+<div>
+<label class="block text-label-caps font-label-caps text-tertiary mb-1">Protein (g)</label>
+<input class="w-full px-2.5 py-1.5 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-md font-bold text-on-surface" step="0.1" type="number" value="3.8">
+</div>
+<div>
+<label class="block text-label-caps font-label-caps text-secondary mb-1">Carbs (g)</label>
+<input class="w-full px-2.5 py-1.5 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-md font-bold text-on-surface" step="0.1" type="number" value="24.2">
+</div>
+<div>
+<label class="block text-label-caps font-label-caps text-outline mb-1">Fat (g)</label>
+<input class="w-full px-2.5 py-1.5 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-md font-bold text-on-surface" step="0.1" type="number" value="1.1">
+</div>
+</div>
+</div>
+<div>
+<label class="block text-label-caps font-label-caps text-outline uppercase tracking-wider mb-1">Verification Status</label>
+<select class="w-full px-3.5 py-2 bg-surface-container-lowest border border-outline-variant rounded-xl text-body-md text-on-surface focus:outline-none focus:border-primary">
+<option selected="">Verified by AI Lab</option>
+<option>Community Reviewed</option>
+<option>Pending Verification</option>
+</select>
+</div>
+<!-- Modal Actions -->
+<div class="pt-4 flex items-center justify-end gap-3 border-t border-surface-container">
+<button class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container text-body-md font-semibold transition-colors" onclick="document.getElementById('editModal').classList.add('hidden')" type="button">
+            Cancel
+          </button>
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary text-body-md font-headline-sm font-semibold hover:bg-primary-container active:scale-98 transition-all" type="submit">
+            Save Verification
+          </button>
+</div>
+</form>
+</div>
+</div>
+</body></html>

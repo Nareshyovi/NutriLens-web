@@ -1,0 +1,903 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Account &amp; System Settings - NutriLens AI</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Plus Jakarta Sans & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration (Exact from system) -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error": "#ba1a1a",
+            "surface": "#f1fcf5",
+            "on-secondary-fixed-variant": "#763300",
+            "surface-dim": "#d1ddd6",
+            "tertiary-fixed-dim": "#adc6ff",
+            "on-error": "#ffffff",
+            "outline-variant": "#bdcabf",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed-variant": "#004395",
+            "surface-container-low": "#ebf6f0",
+            "surface-container-lowest": "#ffffff",
+            "outline": "#6d7a71",
+            "on-primary-fixed": "#002112",
+            "on-tertiary-fixed": "#001a42",
+            "surface-variant": "#dae5df",
+            "surface-bright": "#f1fcf5",
+            "on-primary-container": "#f6fff6",
+            "surface-container": "#e5f1ea",
+            "on-secondary-fixed": "#321200",
+            "primary-fixed-dim": "#69dca1",
+            "secondary-fixed": "#ffdbc9",
+            "background": "#f1fcf5",
+            "on-primary-fixed-variant": "#005233",
+            "secondary": "#9a4600",
+            "on-primary": "#ffffff",
+            "on-secondary-container": "#672c00",
+            "on-secondary": "#ffffff",
+            "on-surface": "#141e1a",
+            "on-surface-variant": "#3e4a41",
+            "on-tertiary-container": "#fefcff",
+            "on-background": "#141e1a",
+            "surface-tint": "#006c45",
+            "tertiary": "#0058be",
+            "secondary-fixed-dim": "#ffb68d",
+            "primary": "#006a43",
+            "surface-container-high": "#e0ebe4",
+            "inverse-on-surface": "#e8f3ed",
+            "inverse-primary": "#69dca1",
+            "primary-fixed": "#86f9bc",
+            "tertiary-fixed": "#d8e2ff",
+            "tertiary-container": "#2170e4",
+            "on-tertiary": "#ffffff",
+            "primary-container": "#008656",
+            "surface-container-highest": "#dae5df",
+            "secondary-container": "#fe893c",
+            "error-container": "#ffdad6",
+            "inverse-surface": "#28332e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "1.75rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "margin": "1.25rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "label-interactive": ["Plus Jakarta Sans"],
+            "label-caps": ["Inter"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "body-md": ["Inter"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "metric-headline": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-interactive": ["15px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "display-hero-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "800" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "metric-headline": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Material Symbols Configuration */
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Rest Card Shadows adhering to design guidance */
+    .nutri-card-shadow {
+      box-shadow: 0px 4px 20px -2px rgba(31, 41, 37, 0.04), 0px 1px 3px 0px rgba(31, 41, 37, 0.02);
+    }
+    .nutri-primary-glow {
+      box-shadow: 0px 8px 24px -2px rgba(0, 106, 67, 0.28);
+    }
+    .nutri-modal-shadow {
+      box-shadow: 0px 12px 32px -4px rgba(31, 41, 37, 0.12), 0px 4px 12px -2px rgba(31, 41, 37, 0.04);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md text-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- ========================================================================= -->
+<!-- TopNavBar (Shared Component JSON Source of Truth) -->
+<!-- ========================================================================= -->
+<header class="w-full h-16 px-6 flex items-center justify-between sticky top-0 z-40 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-8">
+<!-- Brand Logo / Product Name -->
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary nutri-primary-glow">
+<span class="material-symbols-outlined text-[22px]" data-icon="lens_blur">lens_blur</span>
+</div>
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">NutriLens</span>
+</div>
+<!-- Search Bar on Left (as designated in JSON) -->
+<div class="hidden lg:flex items-center relative w-72">
+<span class="material-symbols-outlined absolute left-3 text-outline text-[20px]" data-icon="search">search</span>
+<input class="w-full h-10 pl-9 pr-4 rounded-xl bg-surface-container-low border border-outline-variant/40 text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="Search foods, insights, settings..." type="text">
+</div>
+<!-- Navigation Links from JSON (Context: Settings page is active) -->
+<nav class="hidden md:flex items-center gap-6 text-label-interactive font-label-interactive">
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-colors" href="#dashboard">Dashboard</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-colors" href="#log-journal">Log Journal</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-colors" href="#analytics">Analytics</a>
+<a class="text-on-surface-variant font-medium hover:text-on-surface transition-colors" href="#recipes">Recipes</a>
+</nav>
+</div>
+<!-- Trailing Actions from JSON -->
+<div class="flex items-center gap-3">
+<!-- Trailing Icon: Notifications -->
+<button aria-label="Notifications" class="w-9 h-9 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low active:scale-[0.98] transition-all relative">
+<span class="material-symbols-outlined text-[22px]" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<!-- Trailing Icon: Help -->
+<button aria-label="Help &amp; Knowledge Base" class="w-9 h-9 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[22px]" data-icon="help">help</span>
+</button>
+<!-- Trailing Primary Action: Scan Meal -->
+<button class="h-10 px-4 rounded-full bg-primary hover:bg-primary-container text-on-primary text-label-interactive font-label-interactive flex items-center gap-2 nutri-primary-glow active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="photo_camera">photo_camera</span>
+<span>Scan Meal</span>
+</button>
+<div class="h-6 w-px bg-outline-variant/40 mx-1"></div>
+<!-- User Profile Avatar -->
+<div class="flex items-center gap-2 pl-1 cursor-pointer">
+<img alt="User profile avatar" class="w-9 h-9 rounded-full object-cover ring-2 ring-primary/20" data-alt="Photorealistic studio headshot portrait of Dr. Rohan Sharma, a handsome Indian male clinical nutritionist with gentle lighting, warm confident smile, wearing a subtle deep forest green collar, set against an airy minimal cream studio background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9j6f1EKvO5md-54Yer01hAmFgTRb_79Uu5ep9PXrBwU4esDn21jAPEUIlyN-JrK0fz5dwEc99avVOaKdHg3DyKbrX9s2FoTSKWnSnqi6t-SptmbOMcU2HNWoVKOE-ECOrbUqqRneHlZpZ7t_UdE0AV7PocZNXkW2qSRIY1GvXQAApcdEAZxXjbtrJT4uOqCVedq2_19UU9DMtvxdgG52iL3BeQxm0BBOYQH5ML7Cy9icrpIa5Ybsa">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</header>
+<!-- ========================================================================= -->
+<!-- SideNavBar (Shared Component JSON Source of Truth) -->
+<!-- ========================================================================= -->
+<aside class="fixed left-0 top-0 h-full w-64 pt-16 px-4 pb-6 flex flex-col justify-between z-30 bg-surface-container-lowest border-r border-outline-variant/30">
+<!-- Top Workspace Header -->
+<div class="pt-4 flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high border border-outline-variant/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="hub">hub</span>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">NutriLens AI</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant text-[11px] leading-tight">Pro Nutrition Workspace</span>
+</div>
+</div>
+<!-- CTA Log New Meal -->
+<button class="w-full h-11 px-4 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-label-interactive text-label-interactive flex items-center justify-center gap-2 border border-outline-variant/40 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="add_circle">add_circle</span>
+<span>Log New Meal</span>
+</button>
+<!-- Main Navigation Tabs: Settings is Active as per prompt context -->
+<nav aria-label="Main sidebar navigation" class="flex flex-col gap-1.5">
+<!-- Dashboard Tab -->
+<a class="text-on-surface-variant hover:bg-surface-container-low rounded-xl px-3 py-2.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#dashboard">
+<span class="material-symbols-outlined text-[20px]" data-icon="space_dashboard">space_dashboard</span>
+<span class="text-label-interactive font-label-interactive text-[14px]">Dashboard</span>
+</a>
+<!-- Meal Logs Tab -->
+<a class="text-on-surface-variant hover:bg-surface-container-low rounded-xl px-3 py-2.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#meal-logs">
+<span class="material-symbols-outlined text-[20px]" data-icon="restaurant">restaurant</span>
+<span class="text-label-interactive font-label-interactive text-[14px]">Meal Logs</span>
+</a>
+<!-- Nutrition Trends Tab -->
+<a class="text-on-surface-variant hover:bg-surface-container-low rounded-xl px-3 py-2.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#trends">
+<span class="material-symbols-outlined text-[20px]" data-icon="insights">insights</span>
+<span class="text-label-interactive font-label-interactive text-[14px]">Nutrition Trends</span>
+</a>
+<!-- Goals & Targets Tab -->
+<a class="text-on-surface-variant hover:bg-surface-container-low rounded-xl px-3 py-2.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#goals">
+<span class="material-symbols-outlined text-[20px]" data-icon="track_changes">track_changes</span>
+<span class="text-label-interactive font-label-interactive text-[14px]">Goals &amp; Targets</span>
+</a>
+<!-- Settings Tab (ACTIVE STATE APPLIED EXACTLY PER JSON) -->
+<a class="bg-primary-container/10 text-primary font-semibold rounded-xl px-3 py-2.5 flex items-center gap-3 active:scale-[0.98] transition-transform" href="#settings">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="settings">settings</span>
+<span class="text-label-interactive font-label-interactive text-[14px]">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Footer Tabs from JSON -->
+<div class="pt-4 border-t border-outline-variant/30 flex flex-col gap-1">
+<a class="text-on-surface-variant hover:bg-surface-container-low rounded-xl px-3 py-2.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#support">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+<span class="text-label-interactive font-label-interactive text-[14px]">Support</span>
+</a>
+<button class="w-full text-left text-error hover:bg-error-container/20 rounded-xl px-3 py-2.5 flex items-center gap-3 transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+<span class="text-label-interactive font-label-interactive text-[14px]">Sign Out</span>
+</button>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- Main Workspace Canvas Area (Offset left 64 for SideNavBar) -->
+<!-- ========================================================================= -->
+<main class="ml-64 flex-1 p-8 lg:p-10 max-w-[1340px]">
+<!-- Canvas Header Bar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-outline-variant/30">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-label-caps text-label-caps tracking-wider uppercase">System Preferences</span>
+<span class="text-outline text-body-sm font-body-sm">· Version 3.4.1</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface tracking-tight">Account &amp; System Settings</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Manage your profile credentials, AI preferences, biometric privacy, and security keys.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="h-11 px-5 rounded-full bg-surface-container-lowest border border-outline-variant/50 text-on-surface text-label-interactive font-label-interactive hover:bg-surface-container-low active:scale-[0.98] transition-all" type="button">
+          Discard
+        </button>
+<button class="h-11 px-6 rounded-full bg-primary hover:bg-primary-container text-on-primary text-label-interactive font-label-interactive flex items-center gap-2 nutri-primary-glow active:scale-[0.98] transition-all" id="save-all-btn" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="save">save</span>
+<span>Save Changes</span>
+</button>
+</div>
+</div>
+<!-- Two-Column Settings Layout Grid -->
+<div class="grid grid-cols-12 gap-8 pt-8">
+<!-- LEFT COLUMN: Sub-navigation Menu -->
+<div class="col-span-12 md:col-span-4 lg:col-span-3">
+<div class="sticky top-24 bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/40 nutri-card-shadow">
+<p class="text-label-caps font-label-caps text-outline px-3 pt-2 pb-3 uppercase tracking-wider">Settings Navigation</p>
+<ul class="space-y-1">
+<!-- 1. Profile (Active Item) -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-on-primary font-label-interactive text-label-interactive nutri-primary-glow transition-all" href="#profile-section">
+<span class="material-symbols-outlined text-[20px]" data-icon="person">person</span>
+<span>Profile</span>
+</a>
+</li>
+<!-- 2. Goals and targets -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-interactive text-label-interactive transition-all" href="#goals-section">
+<span class="material-symbols-outlined text-[20px] text-outline" data-icon="track_changes">track_changes</span>
+<span>Goals and targets</span>
+</a>
+</li>
+<!-- 3. Notifications -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-interactive text-label-interactive transition-all" href="#notifications-section">
+<span class="material-symbols-outlined text-[20px] text-outline" data-icon="notifications">notifications</span>
+<span>Notifications</span>
+<span class="ml-auto text-body-sm font-body-sm px-1.5 py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed-variant text-[11px] font-bold">3 new</span>
+</a>
+</li>
+<!-- 4. Appearance -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-interactive text-label-interactive transition-all" href="#appearance-section">
+<span class="material-symbols-outlined text-[20px] text-outline" data-icon="palette">palette</span>
+<span>Appearance</span>
+</a>
+</li>
+<!-- 5. Security -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-interactive text-label-interactive transition-all" href="#security-section">
+<span class="material-symbols-outlined text-[20px] text-outline" data-icon="shield">shield</span>
+<span>Security</span>
+<span class="ml-auto w-2 h-2 rounded-full bg-secondary"></span>
+</a>
+</li>
+<!-- 6. Privacy -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-interactive text-label-interactive transition-all" href="#privacy-section">
+<span class="material-symbols-outlined text-[20px] text-outline" data-icon="lock">lock</span>
+<span>Privacy</span>
+</a>
+</li>
+<!-- 7. Billing -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-interactive text-label-interactive transition-all" href="#billing-section">
+<span class="material-symbols-outlined text-[20px] text-outline" data-icon="credit_card">credit_card</span>
+<span>Billing</span>
+</a>
+</li>
+</ul>
+<div class="mt-4 pt-4 border-t border-outline-variant/30 px-3 pb-2">
+<div class="flex items-center gap-2 text-primary font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified_user">verified_user</span>
+<span>Pro Plan Active</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline mt-1">Next renewal: Oct 28, 2025</p>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Rich Grouped Content Panels -->
+<div class="col-span-12 md:col-span-8 lg:col-span-9 space-y-8">
+<!-- =================================================================== -->
+<!-- 1. PROFILE SECTION CARD -->
+<!-- =================================================================== -->
+<section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/40 p-6 md:p-8 nutri-card-shadow transition-all" id="profile-section">
+<div class="flex items-center justify-between pb-6 border-b border-outline-variant/30">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Profile Information</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Personal details, dietary archetypes, and clinical nutritionist identification.</p>
+</div>
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-label-caps font-label-caps tracking-wider uppercase">Verified Clinician</span>
+</div>
+<!-- Avatar Upload Component -->
+<div class="py-6 border-b border-outline-variant/30 flex flex-col sm:flex-row items-center gap-6">
+<div class="relative group cursor-pointer">
+<img alt="Dr. Rohan Sharma avatar profile" class="w-24 h-24 rounded-full object-cover ring-4 ring-primary-container/20 group-hover:opacity-90 transition-opacity" data-alt="Close-up professional portrait of Dr. Rohan Sharma, a warm and confident 36-year-old male doctor and nutritionist with neat black hair, dressed in crisp medical executive apparel, illuminated by soft diffuse clinical daylight with clean emerald tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE2oF-xW_-JWtZBah5pT6aCXL-P_GwK_JuUfkAEiHXuYvlSqjvkDbjxGRmhy6z1F__TwGzkPtwFIoY9qGln0h0v4qV0oG22948BsaBDqjdbJB5nJNlit6-krhuIznCgZ2LJrpXfMtEFTD65LUUYdKKy5Xd68WA7WeDDiQm_JCZyqnVQNvw3RvUTJATSTxLQO1TUq8kZAm_o2YmXdo_ilM9dy8N_CFZQXs_cZIp4VI6Al-grS86EWN1">
+<div class="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md ring-2 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-[18px]" data-icon="camera_alt">camera_alt</span>
+</div>
+</div>
+<div class="flex flex-col items-center sm:items-start text-center sm:text-left">
+<div class="flex flex-wrap items-center gap-3">
+<button class="h-10 px-4 rounded-full bg-surface-container hover:bg-surface-container-high text-primary font-label-interactive text-label-interactive border border-outline-variant/50 active:scale-[0.98] transition-all" type="button">
+                  Change Avatar
+                </button>
+<button class="text-error hover:text-on-error-container text-label-interactive font-label-interactive px-2 py-1 transition-colors" type="button">
+                  Remove
+                </button>
+</div>
+<p class="text-body-sm font-body-sm text-outline mt-2">
+                Supported formats: PNG, JPG or WEBP up to 5MB. 500x500px recommended.
+              </p>
+</div>
+</div>
+<!-- Editable Form Grid -->
+<form class="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6" onsubmit="event.preventDefault();">
+<!-- Full Name -->
+<div>
+<label class="block text-label-interactive font-label-interactive text-on-surface mb-2" for="full-name">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-3.5 text-outline text-[20px]" data-icon="badge">badge</span>
+<input class="w-full h-12 pl-11 pr-4 rounded-xl bg-surface-container-lowest border border-outline-variant/60 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" id="full-name" type="text" value="Dr. Rohan Sharma">
+</div>
+</div>
+<!-- Email Address with Verified Badge -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<label class="block text-label-interactive font-label-interactive text-on-surface" for="email">Email Address</label>
+<span class="flex items-center gap-1 text-[12px] font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="check_circle">check_circle</span>
+                  Verified
+                </span>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-3.5 text-outline text-[20px]" data-icon="mail">mail</span>
+<input class="w-full h-12 pl-11 pr-4 rounded-xl bg-surface-container-lowest border border-outline-variant/60 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" id="email" type="email" value="rohan.sharma@example.com">
+</div>
+</div>
+<!-- Phone Number -->
+<div>
+<label class="block text-label-interactive font-label-interactive text-on-surface mb-2" for="phone">Phone Number</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-3.5 text-outline text-[20px]" data-icon="call">call</span>
+<input class="w-full h-12 pl-11 pr-4 rounded-xl bg-surface-container-lowest border border-outline-variant/60 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" id="phone" type="tel" value="+1 (555) 234-8901">
+</div>
+</div>
+<!-- Dietary Archetype Selector -->
+<div>
+<label class="block text-label-interactive font-label-interactive text-on-surface mb-2" for="archetype">Dietary Archetype</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-3.5 text-outline text-[20px]" data-icon="nutrition">nutrition</span>
+<select class="w-full h-12 pl-11 pr-10 rounded-xl bg-surface-container-lowest border border-outline-variant/60 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all appearance-none cursor-pointer" id="archetype">
+<option selected="">Vegetarian / Indian Traditional</option>
+<option>Ayurvedic Lacto-Vegetarian</option>
+<option>Mediterranean Pescatarian</option>
+<option>High Protein Macro-Balanced</option>
+<option>Keto Metabolic Clean</option>
+</select>
+<span class="material-symbols-outlined absolute right-3.5 top-3.5 text-outline pointer-events-none text-[20px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Timezone Selector (Spans full grid width or balanced) -->
+<div class="md:col-span-2">
+<label class="block text-label-interactive font-label-interactive text-on-surface mb-2" for="timezone">Timezone</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-3.5 text-outline text-[20px]" data-icon="schedule">schedule</span>
+<select class="w-full h-12 pl-11 pr-10 rounded-xl bg-surface-container-lowest border border-outline-variant/60 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all appearance-none cursor-pointer" id="timezone">
+<option selected="">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+<option>(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+<option>(GMT+00:00) UTC / London</option>
+<option>(GMT+05:30) Mumbai, New Delhi, Kolkata</option>
+<option>(GMT+08:00) Singapore, Perth</option>
+</select>
+<span class="material-symbols-outlined absolute right-3.5 top-3.5 text-outline pointer-events-none text-[20px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</form>
+</section>
+<!-- =================================================================== -->
+<!-- 2. SECURITY SECTION CARD -->
+<!-- =================================================================== -->
+<section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/40 p-6 md:p-8 nutri-card-shadow transition-all" id="security-section">
+<div class="flex items-center justify-between pb-6 border-b border-outline-variant/30">
+<div>
+<div class="flex items-center gap-3">
+<h2 class="text-headline-md font-headline-md text-on-surface">Security &amp; Authentication</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-label-caps font-label-caps font-bold">2FA Recommended</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Control login protection, multi-factor keys, and audited device sessions.</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="security">security</span>
+</div>
+</div>
+<!-- Change Password Sub-card -->
+<div class="py-6 border-b border-outline-variant/30">
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-4">Change Password</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div>
+<label class="block text-body-sm font-body-sm text-on-surface-variant mb-1.5" for="current-pwd">Current Password</label>
+<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/60 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" id="current-pwd" placeholder="••••••••••••" type="password">
+</div>
+<div>
+<label class="block text-body-sm font-body-sm text-on-surface-variant mb-1.5" for="new-pwd">New Password</label>
+<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/60 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" id="new-pwd" type="password" value="NUTRILENS#Secure2025">
+</div>
+<div>
+<label class="block text-body-sm font-body-sm text-on-surface-variant mb-1.5" for="confirm-pwd">Confirm New Password</label>
+<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/60 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" id="confirm-pwd" type="password" value="NUTRILENS#Secure2025">
+</div>
+</div>
+<!-- Password Strength Meter -->
+<div class="mt-4 p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-body-sm font-body-sm font-semibold text-on-surface">Password Strength: <span class="text-primary font-bold">Strong</span></span>
+<span class="text-body-sm font-body-sm text-outline">Entropy: 84 bits</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden flex gap-1">
+<div class="h-full w-1/4 rounded-full bg-primary"></div>
+<div class="h-full w-1/4 rounded-full bg-primary"></div>
+<div class="h-full w-1/4 rounded-full bg-primary"></div>
+<div class="h-full w-1/4 rounded-full bg-primary/40"></div>
+</div>
+</div>
+<button class="h-9 px-4 rounded-lg bg-surface-container-lowest border border-outline-variant/60 hover:bg-surface-container text-on-surface font-label-interactive text-label-interactive active:scale-[0.98] transition-all" type="button">
+                Update Password
+              </button>
+</div>
+</div>
+<!-- Two-Factor Authentication (2FA) Panel -->
+<div class="py-6 border-b border-outline-variant/30">
+<div class="flex items-center justify-between mb-4">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2">
+                  Two-Factor Authentication (2FA)
+                  <span class="text-[12px] px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold">Recommended</span>
+</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Protect nutrition clinical records using TOTP authenticator tokens.</p>
+</div>
+<!-- Custom Switch Toggle Enabled -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Stylized 2FA Setup Panel -->
+<div class="rounded-xl border border-outline-variant/40 bg-surface-container-low/70 p-5 mt-4">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+<!-- Stylized QR Code Box -->
+<div class="md:col-span-4 flex flex-col items-center justify-center p-4 bg-surface-container-lowest rounded-xl border border-outline-variant/30">
+<div class="w-36 h-36 bg-surface-container p-2 rounded-lg border border-outline-variant/40 flex flex-col items-center justify-center relative">
+<!-- SVG Procedural QR Graphic -->
+<svg class="w-full h-full text-on-surface" viewBox="0 0 100 100">
+<rect fill="#ffffff" height="100" rx="4" width="100"></rect>
+<!-- Top-Left Target -->
+<rect fill="#141e1a" height="24" width="24" x="10" y="10"></rect>
+<rect fill="#ffffff" height="16" width="16" x="14" y="14"></rect>
+<rect fill="#006a43" height="8" width="8" x="18" y="18"></rect>
+<!-- Top-Right Target -->
+<rect fill="#141e1a" height="24" width="24" x="66" y="10"></rect>
+<rect fill="#ffffff" height="16" width="16" x="70" y="14"></rect>
+<rect fill="#006a43" height="8" width="8" x="74" y="18"></rect>
+<!-- Bottom-Left Target -->
+<rect fill="#141e1a" height="24" width="24" x="10" y="66"></rect>
+<rect fill="#ffffff" height="16" width="16" x="14" y="70"></rect>
+<rect fill="#006a43" height="8" width="8" x="18" y="74"></rect>
+<!-- Matrix Data Nodes -->
+<rect fill="#141e1a" height="6" width="6" x="42" y="12"></rect>
+<rect fill="#141e1a" height="6" width="6" x="52" y="12"></rect>
+<rect fill="#006a43" height="6" width="6" x="42" y="24"></rect>
+<rect fill="#141e1a" height="6" width="6" x="48" y="32"></rect>
+<rect fill="#141e1a" height="6" width="6" x="12" y="42"></rect>
+<rect fill="#141e1a" height="6" width="6" x="24" y="42"></rect>
+<rect fill="#141e1a" height="6" width="6" x="34" y="42"></rect>
+<rect fill="#006a43" height="6" width="6" x="48" y="44"></rect>
+<rect fill="#141e1a" height="6" width="6" x="58" y="44"></rect>
+<rect fill="#141e1a" height="6" width="6" x="72" y="44"></rect>
+<rect fill="#141e1a" height="6" width="6" x="84" y="44"></rect>
+<rect fill="#141e1a" height="6" width="6" x="42" y="66"></rect>
+<rect fill="#141e1a" height="6" width="6" x="54" y="66"></rect>
+<rect fill="#006a43" height="6" width="6" x="66" y="66"></rect>
+<rect fill="#141e1a" height="6" width="6" x="42" y="78"></rect>
+<rect fill="#141e1a" height="6" width="6" x="78" y="78"></rect>
+<rect fill="#141e1a" height="6" width="6" x="54" y="86"></rect>
+</svg>
+</div>
+<span class="text-body-sm font-body-sm text-outline mt-2 text-center text-[12px]">Scan with Google Authenticator or 1Password</span>
+</div>
+<!-- Code Details & Verification Field -->
+<div class="md:col-span-8 flex flex-col gap-4">
+<div>
+<span class="text-label-caps font-label-caps text-outline uppercase tracking-wider">Secret Setup Key</span>
+<div class="mt-1 flex items-center gap-2">
+<code class="px-3 py-2 rounded-lg bg-surface-container-lowest border border-outline-variant/40 font-mono text-[14px] text-primary font-bold tracking-wider select-all">
+                        NLX9-77K2-MB4Q-89ZT
+                      </code>
+<button class="h-10 px-3 rounded-lg bg-surface-container-lowest border border-outline-variant/50 hover:bg-surface-container text-on-surface flex items-center gap-1 text-label-interactive font-label-interactive text-[13px] active:scale-[0.98] transition-all" title="Copy Secret Code" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="content_copy">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+</div>
+<div>
+<span class="text-label-caps font-label-caps text-outline uppercase tracking-wider">Verify 6-Digit Test Code</span>
+<div class="mt-1.5 flex items-center gap-3">
+<input class="w-36 h-10 px-3 text-center tracking-widest font-mono text-headline-sm font-headline-sm rounded-xl bg-surface-container-lowest border border-outline-variant/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" maxlength="6" placeholder="849 201" type="text">
+<button class="h-10 px-4 rounded-xl bg-primary text-on-primary font-label-interactive text-label-interactive active:scale-[0.98] transition-all" type="button">
+                        Confirm Code
+                      </button>
+<span class="text-primary flex items-center gap-1 text-body-sm font-body-sm font-semibold">
+<span class="material-symbols-outlined text-[18px]" data-icon="check">check</span>
+                        Synced
+                      </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Sessions Data Table -->
+<div class="pt-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Active Sessions</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Devices currently authenticated to your NutriLens account.</p>
+</div>
+<button class="h-9 px-4 rounded-full border border-error/40 text-error hover:bg-error-container/20 text-label-interactive font-label-interactive flex items-center gap-1.5 active:scale-[0.98] transition-all self-start sm:self-auto" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="power_settings_new">power_settings_new</span>
+<span>Log out all other devices</span>
+</button>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto rounded-xl border border-outline-variant/40">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant text-label-caps font-label-caps uppercase border-b border-outline-variant/30">
+<th class="py-3 px-4">Device &amp; Client</th>
+<th class="py-3 px-4">Location</th>
+<th class="py-3 px-4">IP Address</th>
+<th class="py-3 px-4">Status / Activity</th>
+<th class="py-3 px-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 bg-surface-container-lowest text-body-sm font-body-sm">
+<!-- Session 1: Current Session -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-4 font-medium text-on-surface flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="laptop_mac">laptop_mac</span>
+</div>
+<div>
+<div class="font-semibold text-on-surface">Mac OS Sonoma · Chrome 122</div>
+<div class="text-[11px] text-outline">Primary Workstation</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant">New York, USA</td>
+<td class="py-3.5 px-4 font-mono text-outline">192.0.2.45</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-semibold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                        Active Now
+                      </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="text-outline text-[12px] font-medium italic">Current</span>
+</td>
+</tr>
+<!-- Session 2: iPhone 15 Pro -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-4 font-medium text-on-surface flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="smartphone">smartphone</span>
+</div>
+<div>
+<div class="font-semibold text-on-surface">iPhone 15 Pro · NutriLens App v3.2</div>
+<div class="text-[11px] text-outline">Biometric Passkey</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant">New York, USA</td>
+<td class="py-3.5 px-4 font-mono text-outline">198.51.100.12</td>
+<td class="py-3.5 px-4 text-outline">Active 2 hours ago</td>
+<td class="py-3.5 px-4 text-right">
+<button class="text-error hover:text-on-error-container text-label-interactive font-label-interactive text-[13px] active:scale-[0.98] transition-colors" type="button">
+                        Revoke
+                      </button>
+</td>
+</tr>
+<!-- Session 3: Windows 11 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-4 font-medium text-on-surface flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="desktop_windows">desktop_windows</span>
+</div>
+<div>
+<div class="font-semibold text-on-surface">Windows 11 · Edge 121</div>
+<div class="text-[11px] text-outline">Office Clinic Terminal</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface-variant">Boston, USA</td>
+<td class="py-3.5 px-4 font-mono text-outline">203.0.113.88</td>
+<td class="py-3.5 px-4 text-outline">Active 3 days ago</td>
+<td class="py-3.5 px-4 text-right">
+<button class="text-error hover:text-on-error-container text-label-interactive font-label-interactive text-[13px] active:scale-[0.98] transition-colors" type="button">
+                        Revoke
+                      </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- =================================================================== -->
+<!-- 3. PRIVACY & DATA SECTION CARD -->
+<!-- =================================================================== -->
+<section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/40 p-6 md:p-8 nutri-card-shadow transition-all" id="privacy-section">
+<div class="flex items-center justify-between pb-6 border-b border-outline-variant/30">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Privacy, Telemetry &amp; Vault Controls</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Manage HIPAA telemetry, optical recognition inference location, and export archives.</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="shield_lock">shield_lock</span>
+</div>
+</div>
+<!-- Download My Data Export Component -->
+<div class="py-6 border-b border-outline-variant/30">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Download My Data</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-xl mt-1">
+                  Compliant with HIPAA, GDPR, and CCPA standards. Receive a cryptographic export containing all dietary logs, verified macronutrient records, biometric curves, and AI meal scans.
+                </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="h-10 px-4 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-label-interactive text-label-interactive border border-outline-variant/40 flex items-center gap-2 active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="data_object">data_object</span>
+<span>Export as JSON</span>
+</button>
+<button class="h-10 px-4 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-label-interactive text-label-interactive border border-outline-variant/40 flex items-center gap-2 active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="table_view">table_view</span>
+<span>Export as CSV</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Consent & AI Preferences Toggles -->
+<div class="py-6 border-b border-outline-variant/30">
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-4">Consent &amp; AI Preferences</h3>
+<div class="space-y-4">
+<!-- Toggle 1: Camera Scan Processing -->
+<div class="flex items-start justify-between gap-4 p-4 rounded-xl bg-surface-container-low/60 border border-outline-variant/30">
+<div class="flex items-start gap-3.5">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest border border-outline-variant/40 flex items-center justify-center text-primary mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="photo_camera_front">photo_camera_front</span>
+</div>
+<div>
+<h4 class="text-label-interactive font-label-interactive text-on-surface">Camera Scan Processing</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">
+                      Use on-device Neural Engine or HIPAA-isolated cloud compute for food volume and ingredient detection.
+                    </p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer mt-1">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-12 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Toggle 2: Personalized AI Recommendations -->
+<div class="flex items-start justify-between gap-4 p-4 rounded-xl bg-surface-container-low/60 border border-outline-variant/30">
+<div class="flex items-start gap-3.5">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest border border-outline-variant/40 flex items-center justify-center text-primary mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="psychology">psychology</span>
+</div>
+<div>
+<h4 class="text-label-interactive font-label-interactive text-on-surface">Personalized AI Recommendations</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">
+                      Allow NutriLens to adapt macro targets according to meal pacing, circadian rhythms, and glycemic response markers.
+                    </p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer mt-1">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-12 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Toggle 3: Anonymized Research Telemetry -->
+<div class="flex items-start justify-between gap-4 p-4 rounded-xl bg-surface-container-low/60 border border-outline-variant/30">
+<div class="flex items-start gap-3.5">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest border border-outline-variant/40 flex items-center justify-center text-primary mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="science">science</span>
+</div>
+<div>
+<h4 class="text-label-interactive font-label-interactive text-on-surface">Anonymized Research Telemetry</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">
+                      Share non-identifiable nutritional metrics to enhance Indian regional culinary and vegetarian food vision models.
+                    </p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer mt-1">
+<input class="sr-only peer" type="checkbox">
+<div class="w-12 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Danger Zone Card -->
+<div class="mt-6 p-5 rounded-2xl border border-error/30 bg-error-container/10">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-xl bg-error/10 text-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="warning">warning</span>
+</div>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-error">Danger Zone: Delete My Account</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5 max-w-xl">
+                    Permanently remove all meal diaries, photo scans, biometrics, and active subscriptions. This action cannot be undone.
+                  </p>
+</div>
+</div>
+<button class="h-11 px-5 rounded-xl bg-error hover:bg-on-error-container text-on-error font-label-interactive text-label-interactive flex items-center justify-center gap-2 active:scale-[0.98] transition-all shrink-0" id="open-delete-modal-btn" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete_forever">delete_forever</span>
+<span>Delete My Account</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- ========================================================================= -->
+<!-- DELETE ACCOUNT CONFIRMATION MODAL -->
+<!-- ========================================================================= -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm hidden p-4" id="delete-account-modal">
+<div class="bg-surface-container-lowest max-w-md w-full rounded-2xl border border-error/30 p-6 md:p-8 nutri-modal-shadow transform transition-all">
+<!-- Modal Header -->
+<div class="flex items-center gap-3 pb-4 border-b border-outline-variant/30">
+<div class="w-10 h-10 rounded-full bg-error/10 text-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]" data-icon="error">error</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Are you absolutely sure?</h3>
+<span class="text-label-caps font-label-caps text-error uppercase">Irreversible Action</span>
+</div>
+</div>
+<!-- Modal Body -->
+<div class="py-4 space-y-3">
+<p class="text-body-md font-body-md text-on-surface-variant">
+          This action is irreversible. All <strong class="text-on-surface font-semibold">142 logged meals</strong>, custom recipes, and AI vision logs will be permanently deleted.
+        </p>
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30">
+<label class="block text-body-sm font-body-sm font-medium text-on-surface mb-2" for="delete-input">
+            Please type <span class="font-mono font-bold text-error bg-error-container/30 px-1.5 py-0.5 rounded">DELETE</span> in the box below to confirm.
+          </label>
+<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/60 font-mono text-body-md font-body-md text-on-surface focus:outline-none focus:border-error focus:ring-2 focus:ring-error/20 uppercase" id="delete-input" placeholder="Type DELETE" type="text">
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="flex items-center justify-end gap-3 pt-4 border-t border-outline-variant/30">
+<button class="h-11 px-5 rounded-full border border-outline-variant/60 bg-surface-container-lowest text-on-surface hover:bg-surface-container text-label-interactive font-label-interactive active:scale-[0.98] transition-all" id="cancel-delete-btn" type="button">
+          Cancel
+        </button>
+<button class="h-11 px-5 rounded-full bg-error text-on-error opacity-40 cursor-not-allowed text-label-interactive font-label-interactive flex items-center gap-1.5 transition-all" disabled="" id="confirm-delete-btn" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+<span>Permanently Delete Account</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Notification Toast for Simulated Interactions -->
+<div class="fixed bottom-6 right-6 z-50 bg-inverse-surface text-inverse-on-surface px-4 py-3 rounded-xl shadow-lg flex items-center gap-3 transition-opacity duration-300 opacity-0 pointer-events-none" id="toast-notify">
+<span class="material-symbols-outlined text-primary-fixed text-[20px]" data-icon="check_circle">check_circle</span>
+<span class="text-body-sm font-body-sm font-medium" id="toast-text">Settings successfully updated.</span>
+</div>
+<!-- Interactive JavaScript for Modals & Micro-interactions -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const deleteModal = document.getElementById('delete-account-modal');
+      const openDeleteBtn = document.getElementById('open-delete-modal-btn');
+      const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+      const deleteInput = document.getElementById('delete-input');
+      const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+      const saveBtn = document.getElementById('save-all-btn');
+      const toast = document.getElementById('toast-notify');
+      const toastText = document.getElementById('toast-text');
+
+      function showToast(message) {
+        toastText.textContent = message;
+        toast.classList.remove('opacity-0', 'pointer-events-none');
+        setTimeout(() => {
+          toast.classList.add('opacity-0', 'pointer-events-none');
+        }, 3500);
+      }
+
+      // Modal open/close
+      if (openDeleteBtn && deleteModal) {
+        openDeleteBtn.addEventListener('click', () => {
+          deleteModal.classList.remove('hidden');
+          deleteInput.value = '';
+          confirmDeleteBtn.disabled = true;
+          confirmDeleteBtn.classList.add('opacity-40', 'cursor-not-allowed');
+          confirmDeleteBtn.classList.remove('active:scale-[0.98]', 'hover:bg-on-error-container');
+        });
+      }
+
+      if (cancelDeleteBtn && deleteModal) {
+        cancelDeleteBtn.addEventListener('click', () => {
+          deleteModal.classList.add('hidden');
+        });
+      }
+
+      // Validate DELETE string input
+      if (deleteInput && confirmDeleteBtn) {
+        deleteInput.addEventListener('input', (e) => {
+          if (e.target.value.trim().toUpperCase() === 'DELETE') {
+            confirmDeleteBtn.disabled = false;
+            confirmDeleteBtn.classList.remove('opacity-40', 'cursor-not-allowed');
+            confirmDeleteBtn.classList.add('active:scale-[0.98]', 'hover:bg-on-error-container');
+          } else {
+            confirmDeleteBtn.disabled = true;
+            confirmDeleteBtn.classList.add('opacity-40', 'cursor-not-allowed');
+            confirmDeleteBtn.classList.remove('active:scale-[0.98]', 'hover:bg-on-error-container');
+          }
+        });
+
+        confirmDeleteBtn.addEventListener('click', () => {
+          deleteModal.classList.add('hidden');
+          showToast('Account scheduled for permanent purge.');
+        });
+      }
+
+      // Save changes action
+      if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+          showToast('Preferences and security settings saved!');
+        });
+      }
+    });
+  </script>
+</body></html>

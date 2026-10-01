@@ -1,0 +1,788 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NutriLens - Personalized AI Nutrition Wizard</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration verbatim from requirements -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed": "#ffdbc9",
+            "on-primary-container": "#f6fff6",
+            "surface-container-lowest": "#ffffff",
+            "inverse-surface": "#28332e",
+            "on-error-container": "#93000a",
+            "outline-variant": "#bdcabf",
+            "on-tertiary-container": "#fefcff",
+            "primary": "#006a43",
+            "background": "#f1fcf5",
+            "on-primary-fixed": "#002112",
+            "tertiary-container": "#2170e4",
+            "on-primary": "#ffffff",
+            "surface-tint": "#006c45",
+            "surface-variant": "#dae5df",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed-variant": "#004395",
+            "on-secondary-fixed-variant": "#763300",
+            "primary-container": "#008656",
+            "secondary": "#9a4600",
+            "tertiary-fixed": "#d8e2ff",
+            "on-primary-fixed-variant": "#005233",
+            "on-error": "#ffffff",
+            "on-surface": "#141e1a",
+            "primary-fixed": "#86f9bc",
+            "outline": "#6d7a71",
+            "error-container": "#ffdad6",
+            "surface-dim": "#d1ddd6",
+            "on-tertiary-fixed": "#001a42",
+            "inverse-primary": "#69dca1",
+            "primary-fixed-dim": "#69dca1",
+            "on-secondary-container": "#672c00",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed-dim": "#adc6ff",
+            "tertiary": "#0058be",
+            "surface-bright": "#f1fcf5",
+            "surface-container": "#e5f1ea",
+            "inverse-on-surface": "#e8f3ed",
+            "surface-container-high": "#e0ebe4",
+            "on-secondary-fixed": "#321200",
+            "surface-container-low": "#ebf6f0",
+            "surface-container-highest": "#dae5df",
+            "secondary-container": "#fe893c",
+            "on-tertiary": "#ffffff",
+            "surface": "#f1fcf5",
+            "on-background": "#141e1a",
+            "on-surface-variant": "#3e4a41",
+            "secondary-fixed-dim": "#ffb68d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.25rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem",
+            "space-xl": "1.75rem",
+            "margin": "1.25rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-caps": ["Inter"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "metric-headline": ["Plus Jakarta Sans"],
+            "label-interactive": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Inter"],
+            "headline-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "display-hero-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "800" }],
+            "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "metric-headline": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-interactive": ["15px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Material Symbols setup */
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+      font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Subtle custom diffuse drop shadows as defined in guidance */
+    .card-ambient-shadow {
+      box-shadow: 0px 4px 20px -2px rgba(31, 41, 37, 0.04), 0px 1px 3px 0px rgba(31, 41, 37, 0.02);
+    }
+    .hero-action-glow {
+      box-shadow: 0px 8px 24px -2px rgba(0, 106, 67, 0.32);
+    }
+    .soft-pill-inset {
+      box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col justify-between selection:bg-primary-fixed selection:text-on-primary-fixed antialiased">
+<!-- TOP APP BAR (From Shared Components JSON & Design System) -->
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant shadow-sm z-40 sticky top-0">
+<div class="w-full max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+<!-- Brand Anchor & Product Identity -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology_alt</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-headline-md font-headline-md text-primary tracking-tight">NutriLens</span>
+<span class="bg-primary-fixed text-on-primary-fixed text-label-caps font-label-caps px-2 py-0.5 rounded-full uppercase tracking-wider">AI Studio</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline">Intelligent Metabolic &amp; Meal Calibrator</p>
+</div>
+</div>
+<!-- Center status pill (Desk ergonomics) -->
+<div class="hidden md:flex items-center gap-2 bg-surface-container-low px-3.5 py-1.5 rounded-full border border-outline-variant/60">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-body-sm font-body-sm text-on-surface-variant font-medium">Calibrating Profile · HIPAA Secured</span>
+</div>
+<!-- Trailing Auxiliary Actions -->
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 text-label-interactive font-label-interactive" type="button">
+<span class="material-symbols-outlined text-[18px]">help</span>
+<span class="hidden sm:inline">Help &amp; Support</span>
+</button>
+<div class="h-4 w-[1px] bg-outline-variant"></div>
+<button class="text-on-surface-variant hover:text-error transition-colors flex items-center gap-1 text-label-interactive font-label-interactive active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[18px]">exit_to_app</span>
+<span>Save &amp; Exit</span>
+</button>
+</div>
+</div>
+</header>
+<!-- MAIN WIZARD CANVAS (Constrained to 960px container on 1440px Canvas) -->
+<main class="flex-grow w-full max-w-4xl mx-auto px-4 md:px-8 py-8 flex flex-col items-center">
+<!-- STEPPER PROGRESS BAR (4 Steps Interactive Navigation) -->
+<div class="w-full mb-8 bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/70 card-ambient-shadow">
+<div class="relative flex items-center justify-between">
+<!-- Progress Line Background -->
+<div class="absolute left-6 right-6 top-5 -translate-y-1/2 h-1 bg-surface-container-high rounded-full -z-0"></div>
+<!-- Dynamic Progress Line Foreground (Step 4 = 100%) -->
+<div class="absolute left-6 top-5 -translate-y-1/2 h-1 bg-primary rounded-full transition-all duration-300 -z-0" id="progress-indicator-line" style="width: 100%;"></div>
+<!-- Step 1 Trigger -->
+<button class="step-nav-btn group flex flex-col items-center relative z-10 focus:outline-none" data-step="1" onclick="goToStep(1)" type="button">
+<div class="step-circle w-10 h-10 rounded-full flex items-center justify-center font-headline-sm text-headline-sm transition-all duration-200 bg-primary text-on-primary shadow-sm ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-base">check</span>
+</div>
+<span class="mt-2 text-label-interactive font-label-interactive text-on-surface group-hover:text-primary transition-colors">1. Goal</span>
+</button>
+<!-- Step 2 Trigger -->
+<button class="step-nav-btn group flex flex-col items-center relative z-10 focus:outline-none" data-step="2" onclick="goToStep(2)" type="button">
+<div class="step-circle w-10 h-10 rounded-full flex items-center justify-center font-headline-sm text-headline-sm transition-all duration-200 bg-primary text-on-primary shadow-sm ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-base">check</span>
+</div>
+<span class="mt-2 text-label-interactive font-label-interactive text-on-surface group-hover:text-primary transition-colors">2. Body Profile</span>
+</button>
+<!-- Step 3 Trigger -->
+<button class="step-nav-btn group flex flex-col items-center relative z-10 focus:outline-none" data-step="3" onclick="goToStep(3)" type="button">
+<div class="step-circle w-10 h-10 rounded-full flex items-center justify-center font-headline-sm text-headline-sm transition-all duration-200 bg-primary text-on-primary shadow-sm ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-base">check</span>
+</div>
+<span class="mt-2 text-label-interactive font-label-interactive text-on-surface group-hover:text-primary transition-colors">3. Dietary Habits</span>
+</button>
+<!-- Step 4 Trigger (Default Active Showcase) -->
+<button class="step-nav-btn group flex flex-col items-center relative z-10 focus:outline-none" data-step="4" onclick="goToStep(4)" type="button">
+<div class="step-circle w-10 h-10 rounded-full flex items-center justify-center font-headline-sm text-headline-sm transition-all duration-200 bg-primary-fixed text-on-primary-fixed ring-4 ring-primary/20 shadow-sm">
+<span>4</span>
+</div>
+<span class="mt-2 text-label-interactive font-label-interactive text-primary font-bold transition-colors">4. Your Plan</span>
+</button>
+</div>
+</div>
+<!-- WIZARD STEP CONTAINERS -->
+<div class="w-full">
+<!-- ================= STEP 1: GOAL SELECTION ================= -->
+<section class="step-panel hidden w-full" id="wizard-step-1">
+<div class="text-center mb-8">
+<span class="text-label-caps font-label-caps text-primary bg-primary-fixed px-3 py-1 rounded-full uppercase">Step 1 of 4</span>
+<h1 class="text-headline-lg font-headline-lg text-on-surface mt-3">What is your primary nutrition goal?</h1>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-xl mx-auto mt-1">NutriLens calibrates your daily energy and macro targets based on your metabolic baseline.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<!-- Option 1: Selected (Lose Weight) -->
+<div class="goal-card cursor-pointer border-2 border-primary bg-surface-container-lowest p-6 rounded-2xl card-ambient-shadow transition-all relative flex flex-col justify-between hover:shadow-md" onclick="selectGoal(this)">
+<div class="absolute -top-3 right-6 bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-2.5 py-0.5 rounded-full uppercase tracking-wider font-bold">
+              Most Popular
+            </div>
+<div>
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed/50 text-secondary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl">local_fire_department</span>
+</div>
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Lose Weight</h3>
+<span class="material-symbols-outlined text-primary goal-check">check_circle</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">Calorie deficit calibrated for sustainable fat loss without muscle depletion.</p>
+</div>
+<div class="bg-surface-container-low rounded-xl p-3 border border-outline-variant/40">
+<span class="text-label-caps font-label-caps text-secondary block font-bold">-500 kcal Deficit</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Target rate: ~0.5 kg/week</span>
+</div>
+</div>
+<!-- Option 2: Maintain Weight -->
+<div class="goal-card cursor-pointer border border-outline-variant bg-surface-container-lowest p-6 rounded-2xl card-ambient-shadow transition-all relative flex flex-col justify-between hover:border-primary/60 hover:shadow-md" onclick="selectGoal(this)">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container-high text-primary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl">balance</span>
+</div>
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Maintain Weight</h3>
+<span class="material-symbols-outlined text-outline-variant goal-check">radio_button_unchecked</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">Caloric equilibrium, body recomposition, stable insulin and energy pacing.</p>
+</div>
+<div class="bg-surface-container-low rounded-xl p-3 border border-outline-variant/40">
+<span class="text-label-caps font-label-caps text-primary block font-bold">0 kcal Net Neutral</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Focus on micronutrient density</span>
+</div>
+</div>
+<!-- Option 3: Gain Muscle -->
+<div class="goal-card cursor-pointer border border-outline-variant bg-surface-container-lowest p-6 rounded-2xl card-ambient-shadow transition-all relative flex flex-col justify-between hover:border-primary/60 hover:shadow-md" onclick="selectGoal(this)">
+<div>
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed text-tertiary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl">fitness_center</span>
+</div>
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Gain Muscle</h3>
+<span class="material-symbols-outlined text-outline-variant goal-check">radio_button_unchecked</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">Optimized protein surplus for hypertrophy with minimal adipose accretion.</p>
+</div>
+<div class="bg-surface-container-low rounded-xl p-3 border border-outline-variant/40">
+<span class="text-label-caps font-label-caps text-tertiary block font-bold">+300 kcal Surplus</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Target rate: ~0.25 kg/week</span>
+</div>
+</div>
+</div>
+<div class="flex justify-end pt-4">
+<button class="px-8 py-3.5 bg-primary text-on-primary rounded-full font-label-interactive text-label-interactive flex items-center gap-2 hover:bg-primary-container transition-all active:scale-[0.98] hero-action-glow" onclick="goToStep(2)" type="button">
+<span>Continue to Body Metrics</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- ================= STEP 2: BODY DETAILS (TWO COLUMNS) ================= -->
+<section class="step-panel hidden w-full" id="wizard-step-2">
+<div class="text-center mb-8">
+<span class="text-label-caps font-label-caps text-primary bg-primary-fixed px-3 py-1 rounded-full uppercase">Step 2 of 4</span>
+<h1 class="text-headline-lg font-headline-lg text-on-surface mt-3">Tell us about your body metrics</h1>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-xl mx-auto mt-1">Accurate data ensures precision in Harris-Benedict BMR equation calculations.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/70 card-ambient-shadow mb-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Column 1: Core Physical Parameters -->
+<div class="space-y-6">
+<!-- Biological Sex -->
+<div>
+<label class="block text-label-interactive font-label-interactive text-on-surface mb-2">Biological Sex</label>
+<div class="grid grid-cols-3 gap-2 bg-surface-container-low p-1.5 rounded-xl border border-outline-variant/50">
+<button class="py-2.5 rounded-lg text-label-interactive font-label-interactive bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all" type="button">Male</button>
+<button class="py-2.5 rounded-lg text-label-interactive font-label-interactive text-on-surface-variant hover:text-on-surface transition-all" type="button">Female</button>
+<button class="py-2.5 rounded-lg text-label-interactive font-label-interactive text-on-surface-variant hover:text-on-surface transition-all" type="button">Other</button>
+</div>
+</div>
+<!-- Age with Stepper -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="text-label-interactive font-label-interactive text-on-surface">Chronological Age</label>
+<span class="text-body-sm font-body-sm text-outline">Years</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="w-12 h-12 rounded-xl bg-surface-container text-on-surface flex items-center justify-center hover:bg-surface-dim transition-colors active:scale-95" onclick="adjustAge(-1)" type="button">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant rounded-xl h-12 flex items-center justify-center">
+<span class="text-headline-md font-headline-md text-on-surface" id="age-display">28</span>
+<span class="text-body-sm font-body-sm text-outline ml-1">yrs</span>
+</div>
+<button class="w-12 h-12 rounded-xl bg-surface-container text-on-surface flex items-center justify-center hover:bg-surface-dim transition-colors active:scale-95" onclick="adjustAge(1)" type="button">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Height with Slider & Metric Toggle -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="text-label-interactive font-label-interactive text-on-surface">Height</label>
+<div class="flex items-center text-label-caps font-label-caps bg-surface-container px-2 py-0.5 rounded-full">
+<span class="text-primary font-bold">CM</span>
+<span class="mx-1 text-outline-variant">|</span>
+<span class="text-outline">FT/IN</span>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-container-low px-4 py-2.5 rounded-xl border border-outline-variant/40 mb-3">
+<span class="text-body-sm font-body-sm text-outline">Measurement</span>
+<span class="text-headline-md font-headline-md text-primary font-bold"><span id="height-val">175</span> <span class="text-body-sm font-normal text-on-surface-variant">cm (5 ft 9 in)</span></span>
+</div>
+<input class="w-full accent-primary h-2 bg-surface-container-high rounded-lg cursor-pointer" max="210" min="140" oninput="document.getElementById('height-val').innerText = this.value" type="range" value="175">
+</div>
+</div>
+<!-- Column 2: Weight & Daily Activity Pacing -->
+<div class="space-y-6">
+<!-- Current & Target Weight Dual Field -->
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-label-interactive font-label-interactive text-on-surface mb-2">Current Weight</label>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-3 flex flex-col">
+<span class="text-headline-md font-headline-md text-on-surface">73.8 <span class="text-body-sm font-normal text-outline">kg</span></span>
+<span class="text-label-caps font-label-caps text-outline mt-1">Measured Today</span>
+</div>
+</div>
+<div>
+<label class="block text-label-interactive font-label-interactive text-on-surface mb-2">Target Weight</label>
+<div class="bg-primary-fixed/30 border border-primary/40 rounded-xl p-3 flex flex-col">
+<span class="text-headline-md font-headline-md text-primary font-bold">68.0 <span class="text-body-sm font-normal text-primary">kg</span></span>
+<span class="text-label-caps font-label-caps text-primary font-bold mt-1">-5.8 kg Target</span>
+</div>
+</div>
+</div>
+<!-- Activity Level Selectable List -->
+<div>
+<label class="block text-label-interactive font-label-interactive text-on-surface mb-2">Daily Physical Activity</label>
+<div class="space-y-2.5">
+<label class="flex items-center justify-between p-3 rounded-xl border border-outline-variant hover:border-primary/40 cursor-pointer transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">weekend</span>
+<div>
+<p class="text-label-interactive font-label-interactive text-on-surface">Sedentary</p>
+<p class="text-body-sm font-body-sm text-outline">Office/desk job, minimal deliberate exercise</p>
+</div>
+</div>
+<input class="text-primary focus:ring-primary h-4 w-4" name="activity" type="radio">
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl border-2 border-primary bg-primary-fixed/20 cursor-pointer transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">directions_run</span>
+<div>
+<p class="text-label-interactive font-label-interactive text-on-surface font-semibold">Moderately Active (Selected)</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Moderate exercise/sports 3–5 days per week</p>
+</div>
+</div>
+<input checked="" class="text-primary focus:ring-primary h-4 w-4" name="activity" type="radio">
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl border border-outline-variant hover:border-primary/40 cursor-pointer transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">fitness_center</span>
+<div>
+<p class="text-label-interactive font-label-interactive text-on-surface">Very Active</p>
+<p class="text-body-sm font-body-sm text-outline">Hard sports/training 6–7 days per week</p>
+</div>
+</div>
+<input class="text-primary focus:ring-primary h-4 w-4" name="activity" type="radio">
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation Buttons -->
+<div class="flex justify-between items-center pt-2">
+<button class="px-6 py-3 border border-outline-variant bg-surface-container-lowest text-on-surface rounded-full font-label-interactive text-label-interactive hover:bg-surface-container transition-all" onclick="goToStep(1)" type="button">
+            Back
+          </button>
+<button class="px-8 py-3.5 bg-primary text-on-primary rounded-full font-label-interactive text-label-interactive flex items-center gap-2 hover:bg-primary-container transition-all active:scale-[0.98] hero-action-glow" onclick="goToStep(3)" type="button">
+<span>Continue to Dietary Habits</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- ================= STEP 3: DIETARY PREFERENCES & ALLERGIES ================= -->
+<section class="step-panel hidden w-full" id="wizard-step-3">
+<div class="text-center mb-8">
+<span class="text-label-caps font-label-caps text-primary bg-primary-fixed px-3 py-1 rounded-full uppercase">Step 3 of 4</span>
+<h1 class="text-headline-lg font-headline-lg text-on-surface mt-3">Dietary preferences &amp; cultural cuisine</h1>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-xl mx-auto mt-1">Trained on 2.4M+ regional meals to recognize ghar ka khana, curries, and macro densities.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/70 card-ambient-shadow mb-8 space-y-6">
+<!-- Category 1: Dietary Lifestyle -->
+<div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-base">eco</span>
+<h2 class="text-label-interactive font-label-interactive text-on-surface">Dietary Lifestyle</h2>
+</div>
+<div class="flex flex-wrap gap-2.5">
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-primary text-on-primary border border-primary transition-all" onclick="toggleChip(this)" type="button">Vegetarian</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-primary text-on-primary border border-primary transition-all" onclick="toggleChip(this)" type="button">Eggetarian</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-surface-container text-on-surface border border-outline-variant/60 hover:border-primary transition-all" onclick="toggleChip(this)" type="button">Vegan</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-surface-container text-on-surface border border-outline-variant/60 hover:border-primary transition-all" onclick="toggleChip(this)" type="button">Non-Vegetarian</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-surface-container text-on-surface border border-outline-variant/60 hover:border-primary transition-all" onclick="toggleChip(this)" type="button">Keto / Low-Carb</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-surface-container text-on-surface border border-outline-variant/60 hover:border-primary transition-all" onclick="toggleChip(this)" type="button">Pescatarian</button>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30"></div>
+<!-- Category 2: Regional & Cultural Flavors -->
+<div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-secondary text-base">restaurant</span>
+<h2 class="text-label-interactive font-label-interactive text-on-surface">Regional &amp; Cultural Flavors</h2>
+</div>
+<div class="flex flex-wrap gap-2.5">
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-secondary-container text-on-secondary-container border border-secondary transition-all font-semibold" onclick="toggleChip(this)" type="button">North Indian (Dal, Roti, Sabzi)</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-secondary-container text-on-secondary-container border border-secondary transition-all font-semibold" onclick="toggleChip(this)" type="button">South Indian (Dosa, Idli, Sambar)</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-surface-container text-on-surface border border-outline-variant/60 hover:border-primary transition-all" onclick="toggleChip(this)" type="button">Global / Continental</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-surface-container text-on-surface border border-outline-variant/60 hover:border-primary transition-all" onclick="toggleChip(this)" type="button">Mediterranean</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-surface-container text-on-surface border border-outline-variant/60 hover:border-primary transition-all" onclick="toggleChip(this)" type="button">East Asian</button>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30"></div>
+<!-- Category 3: Allergies & Sensitivities -->
+<div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-error text-base">warning</span>
+<h2 class="text-label-interactive font-label-interactive text-on-surface">Allergies &amp; Sensitivities</h2>
+</div>
+<div class="flex flex-wrap gap-2.5">
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-surface-container text-on-surface border border-outline-variant/60 hover:border-primary transition-all" onclick="toggleChip(this)" type="button">Lactose / Dairy</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-surface-container text-on-surface border border-outline-variant/60 hover:border-primary transition-all" onclick="toggleChip(this)" type="button">Gluten</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-surface-container text-on-surface border border-outline-variant/60 hover:border-primary transition-all" onclick="toggleChip(this)" type="button">Nuts &amp; Peanuts</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-surface-container text-on-surface border border-outline-variant/60 hover:border-primary transition-all" onclick="toggleChip(this)" type="button">Soy</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-surface-container text-on-surface border border-outline-variant/60 hover:border-primary transition-all" onclick="toggleChip(this)" type="button">Shellfish</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-primary/10 text-primary border border-primary/30 font-medium" onclick="toggleChip(this)" type="button">None</button>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30"></div>
+<!-- Category 4: Cooking & Meal Style -->
+<div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-tertiary text-base">skillet</span>
+<h2 class="text-label-interactive font-label-interactive text-on-surface">Meal Pacing &amp; Cooking Profile</h2>
+</div>
+<div class="flex flex-wrap gap-2.5">
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-tertiary-fixed text-on-tertiary-fixed-variant border border-tertiary/40 font-semibold" onclick="toggleChip(this)" type="button">Home-cooked with ghee/oil tempering</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-surface-container text-on-surface border border-outline-variant/60 hover:border-primary transition-all" onclick="toggleChip(this)" type="button">High-protein focus</button>
+<button class="diet-chip px-4 py-2 rounded-full text-label-interactive font-label-interactive bg-surface-container text-on-surface border border-outline-variant/60 hover:border-primary transition-all" onclick="toggleChip(this)" type="button">Intermittent Fasting (16:8)</button>
+</div>
+</div>
+</div>
+<!-- Navigation Buttons -->
+<div class="flex justify-between items-center pt-2">
+<button class="px-6 py-3 border border-outline-variant bg-surface-container-lowest text-on-surface rounded-full font-label-interactive text-label-interactive hover:bg-surface-container transition-all" onclick="goToStep(2)" type="button">
+            Back
+          </button>
+<button class="px-8 py-3.5 bg-primary text-on-primary rounded-full font-label-interactive text-label-interactive flex items-center gap-2 hover:bg-primary-container transition-all active:scale-[0.98] hero-action-glow" onclick="goToStep(4)" type="button">
+<span>Generate My Nutrition Plan</span>
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+</button>
+</div>
+</section>
+<!-- ================= STEP 4: RESULTS & MACRO BLUEPRINT (DEFAULT ACTIVE) ================= -->
+<section class="step-panel block w-full" id="wizard-step-4">
+<div class="text-center mb-6">
+<div class="inline-flex items-center gap-2 bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full text-label-caps font-label-caps uppercase tracking-wider font-bold mb-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            Metabolic Calibration Complete
+          </div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Your Personalized Nutrition Blueprint is Ready!</h1>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-xl mx-auto mt-1">Based on your metabolic profile, here is your daily target calibrated for sustainable weight loss.</p>
+</div>
+<!-- BENTO RESULTS SHOWCASE GRID -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
+<!-- Card 1: Calorie Target Hero Card (5 Cols) -->
+<div class="lg:col-span-5 bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/70 card-ambient-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="text-label-caps font-label-caps text-outline uppercase tracking-wider">Caloric Baseline</span>
+<span class="flex items-center gap-1 text-label-caps font-label-caps text-secondary font-bold bg-secondary-fixed/50 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-xs">trending_down</span>
+                  -500 kcal
+                </span>
+</div>
+<div class="mb-2">
+<span class="text-display-hero font-display-hero text-primary font-extrabold tracking-tight">1,900</span>
+<span class="text-headline-sm font-headline-sm text-outline-variant ml-1 font-semibold">kcal / day</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Calibrated for healthy fat oxidation while safeguarding lean contractile muscle tissue.</p>
+</div>
+<!-- Milestone Tracker Box -->
+<div class="mt-6 bg-surface-container-low p-4 rounded-xl border border-outline-variant/40 space-y-3">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Milestone Target:</span>
+<span class="font-bold text-on-surface">68.0 kg by Jan 15</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 35%;"></div>
+</div>
+<div class="flex justify-between text-label-caps font-label-caps text-outline">
+<span>Start: 73.8 kg</span>
+<span class="text-primary font-semibold">5.8 kg to lose</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Interactive SVG Donut & Macro Breakdown (7 Cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/70 card-ambient-shadow">
+<div class="flex items-center justify-between mb-4">
+<span class="text-label-caps font-label-caps text-outline uppercase tracking-wider">Target Macro Partitioning</span>
+<span class="text-body-sm font-body-sm text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">verified</span>
+                Balanced Split
+              </span>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-6">
+<!-- SVG Donut Chart with Center Calorie Pill -->
+<div class="relative w-44 h-44 flex-shrink-0 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90 transform" viewBox="0 0 100 100">
+<!-- Background Track -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#ebf6f0" stroke-width="12"></circle>
+<!-- Carbs (45% -> 45 of 251.2 = 113.0) - Warm Orange -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#fe893c" stroke-dasharray="113.04 251.2" stroke-dashoffset="0" stroke-linecap="round" stroke-width="12"></circle>
+<!-- Protein (30% -> 75.36) - Blue -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#2170e4" stroke-dasharray="75.36 251.2" stroke-dashoffset="-113.04" stroke-linecap="round" stroke-width="12"></circle>
+<!-- Fats (25% -> 62.8) - Emerald Primary -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#006a43" stroke-dasharray="62.8 251.2" stroke-dashoffset="-188.4" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center">
+<span class="text-headline-md font-headline-md text-on-surface font-bold leading-none">1,900</span>
+<span class="text-label-caps font-label-caps text-outline uppercase mt-1">Total kcal</span>
+</div>
+</div>
+<!-- Macro Breakdown Legend & Numbers -->
+<div class="w-full space-y-3">
+<!-- Protein Item -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low/60 border border-outline-variant/30">
+<div class="flex items-center gap-2.5">
+<span class="w-3 h-3 rounded-full bg-tertiary-container"></span>
+<div>
+<span class="text-label-interactive font-label-interactive text-on-surface block leading-tight">Protein</span>
+<span class="text-label-caps font-label-caps text-outline">30% · 568 kcal</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-headline-sm font-headline-sm text-tertiary-container font-bold">142<span class="text-body-sm font-normal text-outline ml-0.5">g</span></span>
+</div>
+</div>
+<!-- Carbs Item -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low/60 border border-outline-variant/30">
+<div class="flex items-center gap-2.5">
+<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+<div>
+<span class="text-label-interactive font-label-interactive text-on-surface block leading-tight">Carbohydrates</span>
+<span class="text-label-caps font-label-caps text-outline">45% · 855 kcal</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-headline-sm font-headline-sm text-secondary font-bold">214<span class="text-body-sm font-normal text-outline ml-0.5">g</span></span>
+</div>
+</div>
+<!-- Healthy Fats Item -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low/60 border border-outline-variant/30">
+<div class="flex items-center gap-2.5">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<div>
+<span class="text-label-interactive font-label-interactive text-on-surface block leading-tight">Healthy Fats</span>
+<span class="text-label-caps font-label-caps text-outline">25% · 477 kcal</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-headline-sm font-headline-sm text-primary font-bold">53<span class="text-body-sm font-normal text-outline ml-0.5">g</span></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- AI NUTRITIONAL STRATEGY & ADAPTATION INSIGHTS -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/70 card-ambient-shadow mb-8">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">NutriLens AI Engine Calibration Insights</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/40 flex items-start gap-3">
+<span class="text-xl">🍛</span>
+<div>
+<h3 class="text-label-interactive font-label-interactive text-on-surface font-semibold">Indian Cuisine Adapted</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Calibrated for complex dal carbs, roti satiety, and ghee lipid bioavailability without guesswork.</p>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/40 flex items-start gap-3">
+<span class="text-xl">⚡</span>
+<div>
+<h3 class="text-label-interactive font-label-interactive text-on-surface font-semibold">Satiety Pacing (142g Protein)</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Targeted leucine threshold per meal to retain functional strength during caloric deficit.</p>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/40 flex items-start gap-3">
+<span class="text-xl">💧</span>
+<div>
+<h3 class="text-label-interactive font-label-interactive text-on-surface font-semibold">Hydration Baseline</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">2,500 ml daily (approx 10 glasses) recommended to optimize fiber fermentation and digestion.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- PRIMARY CALL-TO-ACTIONS -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 border-t border-outline-variant/40">
+<button class="w-full sm:w-auto px-6 py-3.5 border border-outline-variant bg-surface-container-lowest text-on-surface rounded-full font-label-interactive text-label-interactive hover:bg-surface-container transition-all flex items-center justify-center gap-2" onclick="goToStep(3)" type="button">
+<span class="material-symbols-outlined text-base">tune</span>
+<span>Adjust targets manually</span>
+</button>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<button class="w-full sm:w-auto px-10 py-4 bg-primary text-on-primary rounded-full font-label-interactive text-label-interactive flex items-center justify-center gap-3 hover:bg-primary-container transition-all active:scale-[0.98] hero-action-glow" type="button">
+<span class="text-base font-bold">Looks good, go to dashboard</span>
+<span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- TRUST & PRIVACY GUARANTEE BANNER -->
+<div class="w-full mt-10 py-3 px-4 bg-surface-container-low rounded-xl border border-outline-variant/50 flex flex-col sm:flex-row items-center justify-center gap-2 text-center text-body-sm font-body-sm text-outline">
+<div class="flex items-center gap-1.5 font-medium text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-base">lock</span>
+<span>Your health and biometrics data is 256-bit encrypted and never sold.</span>
+</div>
+<span class="hidden sm:inline text-outline-variant">·</span>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-base">verified_user</span>
+<span class="font-semibold">HIPAA &amp; GDPR Compliant</span>
+</div>
+</div>
+</main>
+<!-- WEB FOOTER (From Shared Components JSON) -->
+<footer class="w-full bg-surface-container border-t border-outline-variant">
+<div class="w-full max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<span class="text-headline-sm font-headline-sm text-primary">NutriLens</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">· Intelligent AI Meal Vision</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-center md:text-left">
+        © 2025 NutriLens Inc. All rights reserved. HIPAA Compliant &amp; Secure.
+      </p>
+<div class="flex items-center gap-6">
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#privacy">Privacy Policy</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#terms">Terms of Service</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#security">Security &amp; Trust</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#help">Help Center</a>
+</div>
+</div>
+</footer>
+<!-- INTERACTIVE WIZARD JAVASCRIPT CONTROLLER -->
+<script>
+    // State management for wizard flow
+    let currentStep = 4; // Showcase complete rich blueprint state by default
+    const totalSteps = 4;
+
+    function goToStep(stepNumber) {
+      if (stepNumber < 1 || stepNumber > totalSteps) return;
+      currentStep = stepNumber;
+
+      // Update visible step panels
+      for (let i = 1; i <= totalSteps; i++) {
+        const panel = document.getElementById(`wizard-step-i`.replace('i', i));
+        if (panel) {
+          if (i === stepNumber) {
+            panel.classList.remove('hidden');
+            panel.classList.add('block');
+          } else {
+            panel.classList.add('hidden');
+            panel.classList.remove('block');
+          }
+        }
+      }
+
+      // Update Top Progress Stepper UI
+      updateStepperUI(stepNumber);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateStepperUI(activeStep) {
+      const line = document.getElementById('progress-indicator-line');
+      const percentage = ((activeStep - 1) / (totalSteps - 1)) * 100;
+      line.style.width = `${percentage}%`;
+
+      const navButtons = document.querySelectorAll('.step-nav-btn');
+      navButtons.forEach(btn => {
+        const step = parseInt(btn.getAttribute('data-step'));
+        const circle = btn.querySelector('.step-circle');
+        const textLabel = btn.querySelector('span:not(.material-symbols-outlined)');
+
+        if (step < activeStep) {
+          // Completed step
+          circle.className = 'step-circle w-10 h-10 rounded-full flex items-center justify-center font-headline-sm text-headline-sm transition-all duration-200 bg-primary text-on-primary shadow-sm ring-4 ring-surface-container-lowest';
+          circle.innerHTML = '<span class="material-symbols-outlined text-base">check</span>';
+          textLabel.className = 'mt-2 text-label-interactive font-label-interactive text-on-surface group-hover:text-primary transition-colors';
+        } else if (step === activeStep) {
+          // Active step
+          circle.className = 'step-circle w-10 h-10 rounded-full flex items-center justify-center font-headline-sm text-headline-sm transition-all duration-200 bg-primary-fixed text-on-primary-fixed ring-4 ring-primary/20 shadow-sm font-bold';
+          circle.innerHTML = `<span>${step}</span>`;
+          textLabel.className = 'mt-2 text-label-interactive font-label-interactive text-primary font-bold transition-colors';
+        } else {
+          // Future step
+          circle.className = 'step-circle w-10 h-10 rounded-full flex items-center justify-center font-headline-sm text-headline-sm transition-all duration-200 bg-surface-container text-outline ring-4 ring-surface-container-lowest font-medium';
+          circle.innerHTML = `<span>${step}</span>`;
+          textLabel.className = 'mt-2 text-label-interactive font-label-interactive text-outline group-hover:text-on-surface transition-colors';
+        }
+      });
+    }
+
+    // Step 1: Goal Selection Card Interaction
+    function selectGoal(selectedCard) {
+      const cards = document.querySelectorAll('.goal-card');
+      cards.forEach(card => {
+        card.classList.remove('border-2', 'border-primary');
+        card.classList.add('border', 'border-outline-variant');
+        const check = card.querySelector('.goal-check');
+        if (check) {
+          check.innerText = 'radio_button_unchecked';
+          check.className = 'material-symbols-outlined text-outline-variant goal-check';
+        }
+      });
+
+      selectedCard.classList.remove('border', 'border-outline-variant');
+      selectedCard.classList.add('border-2', 'border-primary');
+      const activeCheck = selectedCard.querySelector('.goal-check');
+      if (activeCheck) {
+        activeCheck.innerText = 'check_circle';
+        activeCheck.className = 'material-symbols-outlined text-primary goal-check';
+      }
+    }
+
+    // Step 2: Age Adjuster Helper
+    function adjustAge(delta) {
+      const ageEl = document.getElementById('age-display');
+      let age = parseInt(ageEl.innerText) || 28;
+      age = Math.max(16, Math.min(95, age + delta));
+      ageEl.innerText = age;
+    }
+
+    // Step 3: Diet Chip Filter Toggle
+    function toggleChip(chip) {
+      if (chip.classList.contains('bg-primary')) {
+        chip.classList.remove('bg-primary', 'text-on-primary', 'border-primary');
+        chip.classList.add('bg-surface-container', 'text-on-surface', 'border-outline-variant/60');
+      } else {
+        chip.classList.remove('bg-surface-container', 'text-on-surface', 'border-outline-variant/60');
+        chip.classList.add('bg-primary', 'text-on-primary', 'border-primary');
+      }
+    }
+  </script>
+</body></html>

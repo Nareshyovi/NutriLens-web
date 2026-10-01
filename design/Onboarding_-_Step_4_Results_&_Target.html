@@ -1,0 +1,306 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NutriLens - Your Plan</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#006a43",
+            "on-primary-fixed-variant": "#005233",
+            "primary-fixed-dim": "#69dca1",
+            "surface-container": "#e5f1ea",
+            "surface-tint": "#006c45",
+            "primary-fixed": "#86f9bc",
+            "surface-container-lowest": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-background": "#141e1a",
+            "error": "#ba1a1a",
+            "on-primary-fixed": "#002112",
+            "surface-dim": "#d1ddd6",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "tertiary-container": "#2170e4",
+            "background": "#f1fcf5",
+            "surface-container-highest": "#dae5df",
+            "secondary-fixed-dim": "#ffb68d",
+            "surface-bright": "#f1fcf5",
+            "on-secondary-fixed-variant": "#763300",
+            "surface-container-high": "#e0ebe4",
+            "outline": "#6d7a71",
+            "secondary-fixed": "#ffdbc9",
+            "secondary": "#9a4600",
+            "on-primary-container": "#f6fff6",
+            "inverse-surface": "#28332e",
+            "on-tertiary-fixed": "#001a42",
+            "on-secondary-fixed": "#321200",
+            "on-secondary": "#ffffff",
+            "on-surface": "#141e1a",
+            "surface-variant": "#dae5df",
+            "secondary-container": "#fe893c",
+            "primary-container": "#008656",
+            "surface-container-low": "#ebf6f0",
+            "outline-variant": "#bdcabf",
+            "surface": "#f1fcf5",
+            "on-tertiary-container": "#fefcff",
+            "on-tertiary-fixed-variant": "#004395",
+            "tertiary": "#0058be",
+            "tertiary-fixed-dim": "#adc6ff",
+            "on-secondary-container": "#672c00",
+            "tertiary-fixed": "#d8e2ff",
+            "on-tertiary": "#ffffff",
+            "inverse-primary": "#69dca1",
+            "inverse-on-surface": "#e8f3ed",
+            "on-surface-variant": "#3e4a41",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "1.75rem",
+            "gutter-mobile": "0.75rem",
+            "space-lg": "1.25rem",
+            "gutter": "1rem",
+            "margin": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "metric-headline": ["Plus Jakarta Sans"],
+            "label-caps": ["Inter"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Inter"],
+            "label-interactive": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "display-hero-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "800" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "metric-headline": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-interactive": ["15px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "600" }]
+          },
+          "boxShadow": {
+            "card": "0px 4px 20px -2px rgba(31, 41, 37, 0.04), 0px 1px 3px 0px rgba(31, 41, 37, 0.02)",
+            "elevated": "0px 12px 32px -4px rgba(31, 41, 37, 0.08), 0px 4px 12px -2px rgba(31, 41, 37, 0.03)",
+            "hero-glow": "0px 8px 24px -2px rgba(0, 106, 67, 0.28)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Main Viewport Container (Constrained 600px Mobile Experience) -->
+<div class="w-full max-w-[600px] mx-auto min-h-screen flex flex-col justify-between bg-background shadow-sm">
+<!-- Top Navigation Anchor (Shared Component: TopAppBar) -->
+<header class="bg-background dark:bg-inverse-surface sticky top-0 z-30 transition-all">
+<div class="flex justify-between items-center w-full px-space-md py-space-sm max-w-[600px] mx-auto">
+<button aria-label="Go back" class="p-2 -ml-2 rounded-full hover:opacity-80 transition-opacity active:scale-95 duration-150 flex items-center justify-center text-on-surface" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-extrabold text-primary dark:text-primary-fixed tracking-tight">
+          NutriLens
+        </h1>
+<button class="text-label-interactive font-label-interactive text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 duration-150 py-1 px-2" type="button">
+          Skip
+        </button>
+</div>
+<!-- Linear Stepper Progress Bar (Step 4 of 4) -->
+<div class="px-space-md pb-space-sm">
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant mb-1.5">
+<span class="font-semibold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            Step 4 of 4
+          </span>
+<span class="font-medium text-primary">100% Complete</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary rounded-full w-full transition-all duration-700 ease-out"></div>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<main class="flex-1 px-space-md py-space-md flex flex-col gap-space-xl">
+<!-- Celebration & AI Assessment Header -->
+<div class="flex flex-col items-center text-center pt-space-xs">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed/40 border border-primary-fixed text-primary font-headline-sm text-body-sm mb-2.5">
+<span class="text-sm">✨</span>
+<span class="font-semibold tracking-tight">Your Personalized Plan is Ready!</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-sm">
+          Based on your profile, we calculated your daily calorie deficit for healthy, sustainable weight loss.
+        </p>
+</div>
+<!-- Hero Calorie Target Card (Asymmetric Bento Highlight) -->
+<section class="bg-surface-container-lowest rounded-[20px] border border-[#E5E9E7] p-space-lg shadow-card relative overflow-hidden flex flex-col items-center text-center">
+<!-- Subtle Glow Layer -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary-fixed/30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-10 -left-10 w-28 h-28 bg-surface-container rounded-full blur-xl pointer-events-none"></div>
+<div class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-label-caps text-label-caps uppercase tracking-wider mb-2">
+          Daily Energy Budget
+        </div>
+<div class="my-1 flex items-baseline justify-center gap-1.5">
+<span class="font-display-hero-mobile text-display-hero-mobile text-on-surface tracking-tight font-extrabold">1,900</span>
+<span class="text-headline-md font-headline-md text-on-surface-variant font-medium">kcal / day</span>
+</div>
+<!-- Deficit Pill Badge -->
+<div class="mt-2 mb-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed/50 text-secondary border border-secondary-fixed font-headline-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px]">trending_down</span>
+<span class="font-semibold">Weight Loss Target (-500 kcal deficit)</span>
+</div>
+<!-- Metric Note Baseline -->
+<div class="w-full pt-3 border-t border-[#E5E9E7] flex flex-col sm:flex-row items-center justify-around gap-2 text-body-sm font-body-sm text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">local_fire_department</span>
+<span>Base burn: <strong class="text-on-surface font-semibold">2,400 kcal</strong></span>
+</div>
+<span class="hidden sm:inline text-outline-variant">·</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">pace</span>
+<span>Target pace: <strong class="text-on-surface font-semibold">0.5 kg / week</strong></span>
+</div>
+</div>
+</section>
+<!-- Macro Split Section -->
+<section class="flex flex-col gap-3">
+<div class="flex justify-between items-baseline px-0.5">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Optimal Macro Distribution</h2>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Balanced Ratio</span>
+</div>
+<!-- Visual Segmented Bar -->
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden flex gap-1 p-0.5 bg-surface-container-high">
+<!-- Protein 30% -->
+<div class="h-full rounded-full bg-[#3B82F6]" style="width: 30%;" title="Protein 30%"></div>
+<!-- Carbs 45% -->
+<div class="h-full rounded-full bg-[#FF8A3D]" style="width: 45%;" title="Carbs 45%"></div>
+<!-- Fat 25% -->
+<div class="h-full rounded-full bg-[#8B5CF6]" style="width: 25%;" title="Fat 25%"></div>
+</div>
+<!-- Macro Breakdown Grid (Bento Style Cards) -->
+<div class="grid grid-cols-1 gap-2.5 mt-1">
+<!-- Protein Card -->
+<div class="bg-surface-container-lowest p-space-md rounded-[16px] border border-[#E5E9E7] shadow-card flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-[12px] bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6] font-bold text-headline-sm">
+                P
+              </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Protein</span>
+<span class="text-body-sm font-medium px-2 py-0.5 rounded-full bg-[#3B82F6]/10 text-[#3B82F6]">30%</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Muscle preservation &amp; satiety</span>
+<span class="text-body-sm font-body-sm text-outline mt-0.5">Ideal: Paneer, Dal, Sprouts, Tofu</span>
+</div>
+</div>
+<div class="text-right pl-2">
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface leading-none">142<span class="text-body-sm font-normal text-on-surface-variant ml-0.5">g</span></div>
+<span class="text-[11px] font-body-sm text-outline">568 kcal</span>
+</div>
+</div>
+<!-- Carbs Card -->
+<div class="bg-surface-container-lowest p-space-md rounded-[16px] border border-[#E5E9E7] shadow-card flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-[12px] bg-[#FF8A3D]/10 flex items-center justify-center text-[#FF8A3D] font-bold text-headline-sm">
+                C
+              </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Carbs</span>
+<span class="text-body-sm font-medium px-2 py-0.5 rounded-full bg-[#FF8A3D]/10 text-[#FF8A3D]">45%</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Clean daily energy</span>
+<span class="text-body-sm font-body-sm text-outline mt-0.5">Ideal: Oats, Roti, Brown Rice, Fruits</span>
+</div>
+</div>
+<div class="text-right pl-2">
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface leading-none">214<span class="text-body-sm font-normal text-on-surface-variant ml-0.5">g</span></div>
+<span class="text-[11px] font-body-sm text-outline">855 kcal</span>
+</div>
+</div>
+<!-- Fats Card -->
+<div class="bg-surface-container-lowest p-space-md rounded-[16px] border border-[#E5E9E7] shadow-card flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-[12px] bg-[#8B5CF6]/10 flex items-center justify-center text-[#8B5CF6] font-bold text-headline-sm">
+                F
+              </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Fat</span>
+<span class="text-body-sm font-medium px-2 py-0.5 rounded-full bg-[#8B5CF6]/10 text-[#8B5CF6]">25%</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Hormone &amp; cell health</span>
+<span class="text-body-sm font-body-sm text-outline mt-0.5">Ideal: Almonds, Ghee, Olive Oil, Seeds</span>
+</div>
+</div>
+<div class="text-right pl-2">
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface leading-none">53<span class="text-body-sm font-normal text-on-surface-variant ml-0.5">g</span></div>
+<span class="text-[11px] font-body-sm text-outline">477 kcal</span>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Coach Insight Card -->
+<section class="bg-surface-container-low border border-primary/20 rounded-[20px] p-space-md flex gap-3 items-start shadow-card">
+<div class="w-9 h-9 rounded-full bg-primary/10 flex-shrink-0 flex items-center justify-center text-primary mt-0.5">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">AI Coach Suggestion</span>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+            💡 AI Tip: Hitting 140g+ protein on a vegetarian diet is easy with paneer, Greek yogurt, soya chunks, and lentils.
+          </p>
+</div>
+</section>
+</main>
+<!-- Bottom Actions & Security Guarantee (Linear Onboarding Footnote) -->
+<footer class="p-space-md flex flex-col gap-3 bg-background/95 backdrop-blur-sm sticky bottom-0 z-20 pb-6 border-t border-[#E5E9E7]/60">
+<!-- Primary Action CTA -->
+<button class="w-full h-12 bg-primary-container text-on-primary-container font-label-interactive text-label-interactive rounded-full flex items-center justify-center gap-2 shadow-hero-glow hover:opacity-90 active:scale-[0.98] transition-all" type="button">
+<span>Looks good — Start Tracking</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<!-- Secondary Action CTA -->
+<button class="w-full py-2 bg-transparent text-on-surface font-label-interactive text-body-md font-semibold text-center hover:opacity-80 active:scale-[0.98] transition-all" type="button">
+        Customize targets manually
+      </button>
+<!-- Privacy & Compliance Safe Harbor -->
+<div class="flex items-center justify-center gap-1.5 text-body-sm font-body-sm text-outline">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Your health data is encrypted and never sold.</span>
+</div>
+</footer>
+</div>
+</body></html>
